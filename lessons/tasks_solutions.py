@@ -50,3 +50,62 @@ if week.get(day) and day == 6 or day == 7:
     print(week[day], " - Weekend!")
 else:
     print(week[day])
+
+# 7. Проверить истинность утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений
+# предикат
+
+# X, Y, Z = 0, 0, 0
+# bool(X)
+# bool(Y)
+# bool(Z)
+# a = not (X or Y or Z)
+# b = not X and not Y and not Z
+# print(a == b)
+k = 0
+while k != 1:
+    X, Y, Z = 0, 0, 0
+    a = not (X or Y or Z)
+    b = not X and not Y and not Z
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    X += 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    X -= 1
+    Y += 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    Y -= 1
+    Z += 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    Z -= 1
+    X += 1
+    Y += 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    Y -= 1
+    Z += 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    Z -= 1
+    Y += 1
+    Z += 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    X -= 1
+    print(f'{X} - {Y} - {Z} - {a == b}')
+    k += 1
+
+# 8. Сообщить в какой четверти координатной плоскости или на какой оси находится точка
+# с координатами Х и У
+
+x, y = 3, -4
+if x > 0 and y > 0:
+    print('the point in the first quarter')
+elif x < 0 and y > 0:
+    print('the point in the second quarter')
+elif x < 0 and y < 0:
+    print('the point in the third quarter')
+elif x > 0 and y < 0:
+    print('the point in the forth quarter')
+elif x == 0:
+    print('the point on the Y-axis')
+elif y == 0:
+    print('the point on the X-axis')
+
+
+
