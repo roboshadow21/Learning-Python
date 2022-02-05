@@ -32,3 +32,21 @@ x = 32.86793
 y = int(x)
 z = x - y
 print(int(z * 10))
+
+# 5. Дано число. Проверить кратно ли оно 5 и 10 или 15 но не 30
+
+number = 40
+if number % 5 == 0 and number % 10 == 0 and number % 30 != 0:
+    print(f'{number} multiply 5 and 10 but 30')
+else:
+    print(f'{number} not multiply')
+
+# 6. Дано число обозначающее день недели. Вывести его название и указать является ли
+# он выходным.
+
+day = 5
+week = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday", 7: "Sunday"}
+if week.get(day) and day == 6 or day == 7:
+    print(week[day], " - Weekend!")
+else:
+    print(week[day])
