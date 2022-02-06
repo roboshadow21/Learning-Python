@@ -138,7 +138,7 @@ def point_distance(x1, x2, y1, y2):
     return distance
 
 
-print(point_distance(2, 5, 3, 7))
+print(point_distance(2, 5, 3, 6))
 
 # Семинар 3-4: примерный список задач
 
