@@ -1,3 +1,5 @@
+import random
+import math
 # Семинар 1-2: примерный список задач
 
 # 1. По двум заданным числам проверить является ли одно квадратом второго
@@ -93,19 +95,79 @@ while k != 1:
 # 8. Сообщить в какой четверти координатной плоскости или на какой оси находится точка
 # с координатами Х и У
 
-x, y = 3, -4
-if x > 0 and y > 0:
-    print('the point in the first quarter')
-elif x < 0 and y > 0:
-    print('the point in the second quarter')
-elif x < 0 and y < 0:
-    print('the point in the third quarter')
-elif x > 0 and y < 0:
-    print('the point in the forth quarter')
-elif x == 0:
-    print('the point on the Y-axis')
-elif y == 0:
-    print('the point on the X-axis')
+
+def show_quarter(x, y):
+    if x > 0 and y > 0:
+        print('the point in the first quarter')
+    elif x < 0 and y > 0:
+        print('the point in the second quarter')
+    elif x < 0 and y < 0:
+        print('the point in the third quarter')
+    elif x > 0 and y < 0:
+        print('the point in the forth quarter')
+    elif x == 0:
+        print('the point on the Y-axis')
+    elif y == 0:
+        print('the point on the X-axis')
 
 
+show_quarter(3, -4)
 
+# 9. Указав номер четверти прямоугольной системы координат , показать допустимые
+# значения координат для точек этой четверти
+
+
+def show_coordinate(quarter_number):
+    if quarter_number == 1:
+        print('x > 0 and y > 0')
+    elif quarter_number == 2:
+        print('x < 0 and y > 0')
+    elif quarter_number == 3:
+        print('x < 0 and y < 0')
+    elif quarter_number == 4:
+        print('x > 0 and y < 0')
+
+
+show_coordinate(1)
+
+# 10. Найти расстояние между двумя точками пространства
+
+
+def point_distance(x1, x2, y1, y2):
+    distance = math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
+    return distance
+
+
+print(point_distance(2, 5, 3, 7))
+
+# Семинар 3-4: примерный список задач
+
+# 11. Сформировать список из  N членов последовательности.
+# Для N = 5: 1, -3, 9, -27, 81 и т .д.
+
+n = 5
+lst = [random.randint(-100, 100) for i in range(n)]
+print(lst)
+
+# 12. Для натурального n создать словарь индекс-значение, состоящий из элементов
+# последовательности 3n + 1.
+# Для n = 6: {1: 4, 2: 7, 3: 10, 4: 13, 5: 16, 6: 19}
+n = 6
+d = {i: i * 3 + 1 for i in range(1, n + 1)}
+print(d)
+
+# 18. Реализовать алгоритм перемешивания списка.
+li = [1, 2, 3, 4, 5, 6]
+random.shuffle(li)
+print(li)
+
+# k = 0
+# while k != len(li) // 2:
+#     for i in range(len(li) - 1):
+#         spam = li[i]
+#         eggs = li[i + 1]
+#         li[i], li[i + 1] = eggs, spam
+#     k += 1
+# else:
+#     li[0], li[-1] = li[-1], li[0]
+# print(li)
