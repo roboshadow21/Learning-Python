@@ -145,16 +145,25 @@ print(point_distance(2, 5, 3, 6))
 # 11. Сформировать список из  N членов последовательности.
 # Для N = 5: 1, -3, 9, -27, 81 и т .д.
 
-n = 5
-lst = [random.randint(-100, 100) for i in range(n)]
-print(lst)
+
+def create_list(number_elements):
+    my_lst = [random.randint(-100, 100) for _ in range(number_elements)]
+    return my_lst
+
+
+print(create_list(5))
 
 # 12. Для натурального n создать словарь индекс-значение, состоящий из элементов
 # последовательности 3n + 1.
 # Для n = 6: {1: 4, 2: 7, 3: 10, 4: 13, 5: 16, 6: 19}
-n = 6
-d = {i: i * 3 + 1 for i in range(1, n + 1)}
-print(d)
+
+
+def create_dict(sequence):
+    my_dict = {i: i * 3 + 1 for i in range(1, sequence + 1)}
+    return my_dict
+
+
+print(create_dict(6))
 
 # 18. Реализовать алгоритм перемешивания списка.
 li = [1, 2, 3, 4, 5, 6]
