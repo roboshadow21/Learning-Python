@@ -159,7 +159,7 @@ print(create_list(5))
 
 
 def create_dict(sequence):
-    my_dict = {i: i * 3 + 1 for i in range(1, sequence + 1)}
+    my_dict = {i: i * 3 + 1 for _ in range(1, sequence + 1)}
     return my_dict
 
 
