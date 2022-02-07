@@ -1,5 +1,6 @@
 import random
 import math
+from decimal import Decimal
 # Семинар 1-2: примерный список задач
 
 # 1. По двум заданным числам проверить является ли одно квадратом второго
@@ -96,18 +97,18 @@ while k != 1:
 # с координатами Х и У
 
 
-def show_quarter(x, y):
-    if x > 0 and y > 0:
+def show_quarter(coord_x, coord_y):
+    if coord_x > 0 and coord_y > 0:
         print('the point in the first quarter')
-    elif x < 0 and y > 0:
+    elif coord_x < 0 and coord_y > 0:
         print('the point in the second quarter')
-    elif x < 0 and y < 0:
+    elif coord_x < 0 and coord_y < 0:
         print('the point in the third quarter')
-    elif x > 0 and y < 0:
+    elif coord_x > 0 and coord_y < 0:
         print('the point in the forth quarter')
-    elif x == 0:
+    elif coord_x == 0:
         print('the point on the Y-axis')
-    elif y == 0:
+    elif coord_y == 0:
         print('the point on the X-axis')
 
 
@@ -158,17 +159,41 @@ print(create_list(5))
 # Для n = 6: {1: 4, 2: 7, 3: 10, 4: 13, 5: 16, 6: 19}
 
 
-def create_dict(sequence):
-    my_dict = {i: i * 3 + 1 for _ in range(1, sequence + 1)}
+def create_dict(sequence_of_keys):
+    my_dict = {d: d * 3 + 1 for d in range(1, sequence_of_keys + 1)}
     return my_dict
 
 
 print(create_dict(6))
 
+# 13. Пользователь задаёт две строки. Определить количество вхождений одной строки в
+# другой.
+
+# first_str = input('Enter first string: ')
+# second_str = input('Enter second string: ')
+# count = first_str.count(second_str)
+# print(f'Substring "{second_str}" occurs {count} times')
+
+# 14. Подсчитать сумму цифр в вещественном числе.
+
+
+def digits_summa(num: str) -> int:
+    dot_number = Decimal(num)
+    num_list = []
+    while dot_number != 0:
+        spam = int(dot_number)
+        num_list.append(spam)
+        dot_number -= spam
+        dot_number *= 10
+    return sum(num_list) if num_list else -1
+
+
+print(digits_summa('2.3457'))
+
 # 18. Реализовать алгоритм перемешивания списка.
-li = [1, 2, 3, 4, 5, 6]
-random.shuffle(li)
-print(li)
+# li = [1, 2, 3, 4, 5, 6]
+# random.shuffle(li)
+# print(li)
 
 # k = 0
 # while k != len(li) // 2:
