@@ -99,17 +99,17 @@ while k != 1:
 
 def show_quarter(coord_x, coord_y):
     if coord_x > 0 and coord_y > 0:
-        print('the point in the first quarter')
+        print('the point is in the first quarter')
     elif coord_x < 0 and coord_y > 0:
-        print('the point in the second quarter')
+        print('the point is in the second quarter')
     elif coord_x < 0 and coord_y < 0:
-        print('the point in the third quarter')
+        print('the point is in the third quarter')
     elif coord_x > 0 and coord_y < 0:
-        print('the point in the forth quarter')
+        print('the point is in the fourth quarter')
     elif coord_x == 0:
-        print('the point on the Y-axis')
+        print('the point is on the Y-axis')
     elif coord_y == 0:
-        print('the point on the X-axis')
+        print('the point is on the X-axis')
 
 
 show_quarter(3, -4)
