@@ -181,9 +181,70 @@ import math
 
 # 22.	Найти расстояние между точками в пространстве 2D/3D
 
-def point_distance(x1, x2, y1, y2, z1, z2):
-    distance = math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2) + math.pow(z2 - z1, 2))
-    return distance
+# def point_distance(x1, x2, y1, y2, z1, z2):
+#     distance = math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2) + math.pow(z2 - z1, 2))
+#     return distance
 
 
-print(round(point_distance(2, 5, 3, 6, 4, 7), 4))
+# print(round(point_distance(2, 5, 3, 6, 4, 7), 4))
+
+# 23.	Показать таблицу квадратов чисел от 1 до N
+
+# num = int(input('Enter a number: '))
+# for i in range(1, num + 1):
+#     print('The square of the number | {} | - | {} |'.format(i, i ** 2))
+
+# 24.	Найти кубы чисел от 1 до N
+
+# number = int(input('Enter a number: '))
+# for i in range(1, number + 1):
+#     print('The cube of the number %d - %d' % (i, pow(i, 3)))
+
+# 25.	Найти сумму чисел от 1 до А
+
+# n = int(input('Enter a number: '))
+# print(sum(range(1, n + 1)))
+# print(n * (n + 1) // 2)
+
+# 26.	Возведите число А в натуральную степень B используя цикл
+
+# a = 2
+# b = 8
+# result = a
+# k = 1
+# while k < b:
+#     result *= a
+#     k += 1
+# print(result)
+
+# 27.	Определить количество цифр в числе
+
+# number = input('Enter a number: ')
+# print('The number of digits in a number %s = %d' % (number, len(number)))
+
+# 28.	Подсчитать сумму цифр в числе
+
+# num = list(map(int, input('Enter number: ')))
+# number = ''.join(map(str, num))
+# print(f'The sum of digits in a number {number} = {sum(num)}')
+
+# 29.	Написать программу вычисления произведения чисел от 1 до N
+
+# n = int(input('Enter a number: '))
+# result = 1
+# for i in range(1, n + 1):
+#     result *= i
+# print(result)
+
+# def factorial(n):
+#     if n < 2:
+#         return 1
+#     return n * factorial(n - 1)
+#
+#
+# print(factorial(5))
+
+# 30.	Показать кубы чисел, заканчивающихся на четную цифру
+
+even_numbers = list(filter(lambda x: x % 2 == 0, map(lambda x: pow(x, 3), range(1, 12))))
+print(even_numbers)
