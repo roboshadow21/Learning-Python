@@ -1,4 +1,6 @@
 import math
+import random
+
 # 1.	Вывести квадрат числа
 
 # num = int(input('Enter the number: '))
@@ -246,5 +248,89 @@ import math
 
 # 30.	Показать кубы чисел, заканчивающихся на четную цифру
 
-even_numbers = list(filter(lambda x: x % 2 == 0, map(lambda x: pow(x, 3), range(1, 12))))
-print(even_numbers)
+# even_numbers = list(filter(lambda x: x % 2 == 0, map(lambda x: pow(x, 3), range(1, 13))))
+# print(even_numbers)
+
+# 31.	Задать массив из 8 элементов и вывести их на экран
+
+# lst = list(range(8))
+# print(lst)
+
+# 32.	Задать массив из 8 элементов, заполненных нулями и единицами вывести их на экран
+
+# lst = [random.randint(0, 1) for _ in range(8)]
+# print(lst)
+
+# 33.	Задать массив из 12 элементов, заполненных числами из [0,9]. Найти сумму
+# положительных/отрицательных элементов массива
+
+# li = [random.randint(-9, 10) for _ in range(12)]
+# print(li)
+# print(sum(list(filter(lambda x: x > 0, li))))
+# print(sum(list(filter(lambda x: x < 0, li))))
+
+# 34.	Написать программу замену элементов массива на противоположные
+
+# lst = [2, 4, 8, 7, 1, 6, 9]
+# print(lst)
+# k = 0
+# i = 0
+# j = -1
+# while k < len(lst) // 2:
+#     lst[i], lst[j] = lst[j], lst[i]
+#     i += 1
+#     j -= 1
+#     k += 1
+#
+# print(lst)
+
+# 35.	Определить, присутствует ли в заданном массиве, некоторое число
+
+# lst = [random.randint(1, 100) for _ in range(20)]
+# print(lst)
+# user_number = int(input('Enter a number: '))
+# print(f'The number {user_number} is present in the specified array' if user_number in lst else
+#       f'The number {user_number} is not present in the specified array')
+
+# 36.	Задать массив, заполнить случайными положительными трёхзначными числами.
+# Показать количество нечетных\четных чисел
+
+# my_lst = [random.randint(100, 999) for _ in range(20)]
+# print(my_lst)
+# print(f'The number of even numbers in array = {len(list(filter(lambda x: x % 2 == 0, my_lst)))}')
+# print(f'The number of even numbers in array = {len(list(filter(lambda x: x % 2 != 0, my_lst)))}')
+
+# 37.	В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
+
+# li = [random.randint(1, 200) for _ in range(123)]
+# lst = [i for i in li if 10 <= i <= 99]
+# print('The number of elements between 10 and 99 = %d' % (len(lst)))
+
+# 38.	Найти сумму чисел одномерного массива стоящих на нечетной позиции
+
+# lst = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+# odd_positions_summa = sum([num for num in lst if lst.index(num) % 2 != 0])
+# print('The sum of the array numbers standing in an odd position = {}'.format(odd_positions_summa))
+
+# 39.	Найти произведение пар чисел в одномерном массиве.
+# Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+
+# li = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+# result_lst = []
+# i = 0
+# j = -1
+# k = 0
+# while k < len(li) // 2:
+#     result_lst.append(li[i] * li[j])
+#     i += 1
+#     j -= 1
+#     k += 1
+#
+# print('The result of multiplying two pairs of numbers = %s' % result_lst)
+
+# 40.	В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом
+
+# li = [round(random.uniform(0, 5), 2) for _ in range(10)]
+# print(li)
+# print('The difference between the maximum and minimum values = {}'.format(max(li) - min(li)))
+
