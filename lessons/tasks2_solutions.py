@@ -458,13 +458,119 @@ from collections import deque
 # for i in matrix:
 #     print(*i)
 #
-# for raw in matrix:
-#     for j in range(len(raw) - 1):
+# for row in matrix:
+#     for j in range(len(row) - 1):
 #         if j % 2 == 0:
-#             raw[j], raw[j + 1] = raw[j + 1], raw[j]
+#             row[j], row[j + 1] = row[j + 1], row[j]
 #
 # print()
 # for i in matrix:
 #     print(*i)
 
+# 51.	Задать двумерный массив следующим правилом: Aₘₙ = m+n
 
+# matrix = [[0 * i for i in range(4)] for i in range(4)]
+# for i, row in enumerate(matrix):
+#     for j in range(len(row)):
+#         matrix[i][j] = i + j
+#
+# print()
+# for i in matrix:
+#     print(*i)
+
+# 52.	В двумерном массиве заменить элементы, у которых оба индекса чётные на их квадраты
+
+# matrix = [[random.randint(2, 9) for _ in range(4)] for _ in range(4)]
+# for i in matrix:
+#     print(*i)
+#
+# for i, row in enumerate(matrix):
+#     for j in range(len(row)):
+#         if i % 2 == 0 and j % 2 == 0:
+#             matrix[i][j] = matrix[i][j] ** 2
+#
+# print()
+# for i in matrix:
+#     print(*i)
+
+# 53.	В двумерном массиве показать позиции числа, заданного пользователем или указать, что такого элемента нет
+
+# user_number = int(input('Enter number: '))
+# matrix = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+# ]
+#
+# for i, row in enumerate(matrix, start=1):
+#     if user_number not in row:
+#         continue
+#     elif user_number in row:
+#         print(f'The position of the element = raw {i}, column {row.index(user_number) + 1}')
+#         break
+# else:
+#     print('There is no such element')
+
+# 54.	В матрице чисел найти сумму элементов главной диагонали
+
+# matrix = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# for i in matrix:
+#     print(*i)
+#
+# summa = 0
+# for i, row in enumerate(matrix):
+#     for j in range(len(row)):
+#         if i == j:
+#             summa += matrix[i][j]
+#
+# print()
+# print(summa)
+
+# 55.	Дан целочисленный массив. Найти среднее арифметическое каждого из столбцов.
+
+# matrix = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# for i in matrix:
+#     print(*i)
+#
+# sum_list = [None] * len(matrix[0])
+#
+# for i, row in enumerate((list(zip(*matrix)))):
+#     sum_list[i] = sum(row) / len(row)
+#     print(f'The arithmetic average of the column N {i} = {sum_list[i]}')
+
+# 56.	Написать программу, которая обменивает элементы первой строки и последней строки
+
+# matrix = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# for i in matrix:
+#     print(*i)
+#
+# for j in range(len(matrix[0])):
+#     matrix[0][j], matrix[-1][j] = matrix[-1][j], matrix[0][j]
+#
+# print()
+# for i in matrix:
+#     print(*i)
+
+# 57.	Написать программу, упорядочивания по убыванию элементов каждой строки двумерного массива.
+
+# matrix = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# for i in matrix:
+#     print(*i)
+#
+# for i in range(len(matrix)):
+#     matrix[i] = sorted(matrix[i], reverse=True)
+#
+# print()
+# for i in matrix:
+#     print(*i)
+
+# 58.	Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить
+
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+if len(matrix) != len(matrix[0]):
+    print('The')
