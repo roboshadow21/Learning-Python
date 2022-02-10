@@ -1,5 +1,6 @@
 import math
 import random
+from collections import deque
 
 # 1.	Вывести квадрат числа
 
@@ -333,4 +334,137 @@ import random
 # li = [round(random.uniform(0, 5), 2) for _ in range(10)]
 # print(li)
 # print('The difference between the maximum and minimum values = {}'.format(max(li) - min(li)))
+
+# 41.	Выяснить являются ли три числа сторонами треугольника
+
+# first_number = int(input('Enter first number: '))
+# second_number = int(input('Enter second number: '))
+# third_number = int(input('Enter third number: '))
+#
+# if first_number + second_number <= third_number:
+#     print('It\'s not a triangle!')
+# elif first_number + third_number <= second_number:
+#     print('It\'s not a triangle!')
+# elif second_number + third_number <= first_number:
+#     print('It\'s not a triangle!')
+# else:
+#     print('It\'s a triangle!')
+
+# 42.	Определить сколько чисел больше 0 введено с клавиатуры
+
+# count = 0
+# for num in range(5):
+#     spam = int(input('Enter a number: '))
+#     if spam > 0:
+#         count += 1
+# print(f'{count} numbers greater then zero')
+
+# 43.	Написать программу преобразования десятичного числа в двоичное
+
+# number = int(input('Enter a number to convert to binary: '))
+# deq = deque()
+# while number:
+#     deq.appendleft(number % 2)
+#     number //= 2
+#
+# print(''.join(list(map(str, deq))))
+
+# 44.	Найти точку пересечения двух прямых заданных уравнением y = k1 * x + b1, y = k2 * x + b2,
+# b1 k1 и b2 и k2 заданы
+
+# k1, b1, k2, b2 = map(float, input('Enter num: ').split())
+# if k1 == k2:
+#     print('Straight lines don\'t intersect!')
+# else:
+#     x = (b2 - b1) / (k1 - k2)
+#     y = k1 * x + b1
+#     print(f'Coordinates of the intersection of the lines x = {x}, y = {y}')
+
+# 45.	Показать числа Фибоначчи
+
+
+# def fib(number):
+#     n = 0
+#     m = 1
+#     for _ in range(number):
+#         temp = m + n
+#         n = m
+#         m = temp
+#         print(temp, end=' ')
+#
+#
+# fib(15)
+#
+#
+# def fib_rec(n):
+#     if n < 1:
+#         return 1
+#     if n < 2:
+#         return 1
+#     return fib_rec(n - 1) + fib_rec(n - 2)
+#
+#
+# print()
+#
+# for i in range(16):
+#     print(fib_rec(i), end=' ')
+
+# 46.	Написать программу масштабирования фигуры
+# чтобы задавались вершины фигуры списком (одной строкой)
+# например: "(0,0) (2,0) (2,2) (0,2)"
+# коэффициент масштабирования k задавался отдельно - 2 или 4 или 0.5
+# В результате показать координаты, которые получатся.
+# при k = 2 получаем "(0,0) (4,0) (4,4) (0,4)"
+
+# coord_string = "(0,0) (2,0) (2,2) (0,2)"
+# k = 2
+# coord_list = list(map(int, [symbol for symbol in coord_string if symbol.isdigit()]))
+# new_coord = [coord * k for coord in coord_list]
+# x1, y1, x2, y2, x3, y3, x4, y4 = new_coord
+# print(f'New coordinates = ({x1},{y1}) ({x2},{y2}) ({x3},{y3}) ({x4},{y4})')
+
+# 47.	Написать программу копирования массива
+
+# arr = [1, 2, 5, 4, 9, 8]
+# new_arr = arr[:]
+# print(new_arr)
+
+# lst = []
+# for el in arr:
+#     lst.append(el)
+# print(lst)
+
+# 48.	Показать двумерный массив размером m×n заполненный целыми числами
+
+# m = 4
+# n = 3
+# matrix = [[i for i in range(m)] for i in range(n)]
+#
+# for i in matrix:
+#     print(*i)
+
+# 49.	Показать двумерный массив размером m×n заполненный вещественными числами
+
+# m = 4
+# n = 4
+# matrix = [[round(random.uniform(0, 6), 1) for _ in range(m)] for _ in range(n)]
+#
+# for i in matrix:
+#     print(*i)
+
+# 50.	В двумерном массиве n×k заменить четные элементы на противоположные
+
+# matrix = [[i for i in range(6)] for i in range(6)]
+# for i in matrix:
+#     print(*i)
+#
+# for raw in matrix:
+#     for j in range(len(raw) - 1):
+#         if j % 2 == 0:
+#             raw[j], raw[j + 1] = raw[j + 1], raw[j]
+#
+# print()
+# for i in matrix:
+#     print(*i)
+
 
