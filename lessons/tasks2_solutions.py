@@ -1,6 +1,6 @@
 import math
 import random
-from collections import deque
+from collections import deque, Counter
 
 # 1.	Вывести квадрат числа
 
@@ -566,11 +566,54 @@ from collections import deque
 
 # 58.	Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+# matrix = [
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9],
+#     # [10, 11, 12]
+# ]
+#
+# if len(matrix) != len(matrix[0]):
+#     print('The number of rows and columns is different!')
+# else:
+#     transposed_matrix = list(zip(*matrix))
+#     for i in transposed_matrix:
+#         print(*i)
 
-if len(matrix) != len(matrix[0]):
-    print('The')
+# 59.	В прямоугольной матрице найти строку с наименьшей суммой элементов.
+
+# matrix = [[random.randint(1, 9) for _ in range(4)] for _ in range(3)]
+# for i in matrix:
+#     print(*i)
+#
+# summa = list(map(lambda x: sum(x), matrix))
+# print(f'Line number with the minimum amount = {summa.index(min(summa))}')
+
+# 60.	Составить частотный словарь элементов двумерного массива
+
+# matrix = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# for i in matrix:
+#     print(*i)
+#
+# rate = Counter()
+# for i, row in enumerate(matrix):
+#     for j in range(len(row)):
+#         rate[matrix[i][j]] += 1
+#
+# for key, value in rate.items():
+#     print(f'The number of element {key} = {value}')
+
+# 61.	Найти произведение двух матриц
+
+m1 = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+m2 = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+length = len(m1)
+m_sum = [[0 for _ in range(length)] for _ in range(length)]
+
+for i in range(length):
+    for j in range(length):
+        for k in range(length):
+            m_sum[i][j] += m1[i][k] * m2[k][j]
+
+for i in m_sum:
+    print(*i)
