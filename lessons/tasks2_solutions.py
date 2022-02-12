@@ -1,6 +1,7 @@
 import math
 import random
 from collections import deque, Counter
+from itertools import count
 
 # 1.	Вывести квадрат числа
 
@@ -144,6 +145,12 @@ from collections import deque, Counter
 #     Y -= 2
 #     k += 1
 
+# for x in range(0, 2):
+#     for y in range(0, 2):
+#         a = not (x or y)
+#         b = not x and not y
+#         print(f'{x} - {y}', a == b)
+
 # 19.	Определить номер четверти плоскости, в которой находится точка с координатами Х и У, причем X ≠ 0 и Y ≠ 0
 
 
@@ -179,6 +186,7 @@ from collections import deque, Counter
 # 21.	Программа проверяет пятизначное число на палиндром.
 
 # number = input('Enter a five-digit number: ')
+# assert len(number) == 5, 'The number is not five-digit!'
 # print(f'The number {number} is a palindrome!' if number[0] == number[-1] and number[1] == number[-2] else
 #       f'The number {number} is not a palindrome!')
 
@@ -570,15 +578,13 @@ from collections import deque, Counter
 #     [1, 2, 3],
 #     [4, 5, 6],
 #     [7, 8, 9],
-#     # [10, 11, 12]
+#     [10, 11, 12]
 # ]
 #
-# if len(matrix) != len(matrix[0]):
-#     print('The number of rows and columns is different!')
-# else:
-#     transposed_matrix = list(zip(*matrix))
-#     for i in transposed_matrix:
-#         print(*i)
+# assert len(matrix) == len(matrix[0]), 'The number of rows is not equal to the number of columns'
+# transposed_matrix = list(zip(*matrix))
+# for i in transposed_matrix:
+#     print(*i)
 
 # 59.	В прямоугольной матрице найти строку с наименьшей суммой элементов.
 
@@ -605,15 +611,180 @@ from collections import deque, Counter
 
 # 61.	Найти произведение двух матриц
 
-m1 = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
-m2 = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
-length = len(m1)
-m_sum = [[0 for _ in range(length)] for _ in range(length)]
+# m1 = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# m2 = [[random.randint(1, 9) for _ in range(4)] for _ in range(4)]
+# length = len(m1)
+# m_sum = [[0 for _ in range(length)] for _ in range(length)]
+#
+# for i in range(length):
+#     for j in range(length):
+#         for k in range(length):
+#             m_sum[i][j] += m1[i][k] * m2[k][j]
+#
+# for i in m_sum:
+#     print(*i)
 
-for i in range(length):
-    for j in range(length):
-        for k in range(length):
-            m_sum[i][j] += m1[i][k] * m2[k][j]
+# 62.	В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 
-for i in m_sum:
-    print(*i)
+# matrix = [
+#     [2, 6, 3, 6],
+#     [4, 2, 8, 3],
+#     [7, 4, 1, 5],
+#     [9, 2, 4, 6]
+# ]
+# minimum_list = list(map(lambda x: min(x), matrix))
+# smallest_element = min(minimum_list)
+# smallest_element_row_idx = minimum_list.index(smallest_element)
+# smallest_element_column_idx = matrix[smallest_element_row_idx].index(min(matrix[smallest_element_row_idx]))
+# new_matrix = matrix[:smallest_element_row_idx] + matrix[smallest_element_row_idx + 1:]
+# list(map(lambda x: x.pop(smallest_element_column_idx), new_matrix))
+#
+# for i in new_matrix:
+#     print(*i)
+
+# 63.	Сформировать трехмерный массив не повторяющимися двузначными числами
+# показать его построчно на экран выводя индексы соответствующего элемента
+
+# c = count(11, 1)
+# three_dimensional_matrix = [[[None for _ in range(4)] for _ in range(4)] for _ in range(4)]
+# length = len(three_dimensional_matrix)
+#
+#
+# def show_matrix(matrix):
+#     for i in range(length):
+#         for j in range(length):
+#             for k in range(length):
+#                 matrix[i][j][k] = next(c)
+#                 print(f'Indexes: i={i} - j={j} - k={k} of the element {matrix[i][j][k]}')
+#
+#
+# show_matrix(three_dimensional_matrix)
+
+# for i in three_dimensional_matrix:
+#     print(*i)
+
+
+# 64.	Показать треугольник Паскаля *Сделать вывод в виде равнобедренного треугольника
+
+# n = int(input("Enter the number of rows: "))
+#
+# for i in range(n):
+#     # adjust space
+#     print(' ' * (n - i), end='')
+#
+#     # compute power of 11
+#     print(' '.join(map(str, str(11 ** i))))
+# Источник: https: // pythonpip.ru / examples / programma - python - dlya - pechati - treugolnika - paskalya
+
+# 65.	Спирально заполнить двумерный массив:
+
+#n - размерность матрицы n x n
+#mat - результирующая матрица
+#st - текущее значение-счетчик для записи в матрицу
+#m - коеффициент, используемый для заполнения верхней
+#матрицы последующих витков, т.к. одномерные матрицы
+#следующих витков имеют меньше значений
+
+# n = int(input("Enter n: "))
+# mat = [[0] * n for i in range(n)]
+# st, m = 1, 0
+# # Заранее присваиваю значение центральному элементу
+# # матрицы
+# mat[n // 2][n // 2] = n * n
+# for v in range(n // 2):
+#     # Заполнение верхней горизонтальной матрицы
+#     for i in range(n - m):
+#         mat[v][i + v] = st
+#         st += 1
+#         # i+=1
+#     # Заполнение правой вертикальной матрицы
+#     for i in range(v + 1, n - v):
+#         mat[i][-v - 1] = st
+#         st += 1
+#         # i+=1
+#     # Заполнение нижней горизонтальной матрицы
+#     for i in range(v + 1, n - v):
+#         mat[-v - 1][-i - 1] = st
+#         st += 1
+#         # i+=1
+#     # Заполнение левой вертикальной матрицы
+#     for i in range(v + 1, n - (v + 1)):
+#         mat[-i - 1][v] = st
+#         st += 1
+#         # i+=1
+#     # v+=1
+#     m += 2
+# # Вывод результата на экран
+# for i in mat:
+#     print(*i)
+
+# 66.	Показать натуральные числа от 1 до N, N задано
+
+# N = int(input('Enter number: '))
+#
+#
+# def show_numbers(n):
+#     m = 1
+#     if n < 2:
+#         return 1
+#     return m + show_numbers(n - 1)
+#
+#
+# for i in range(1, N + 1):
+#     print(show_numbers(i), end=' ')
+
+# 67.	Показать натуральные числа от N до 1, N задано
+
+# N = int(input('Enter number: '))
+#
+#
+# def show_reversed_numbers(n):
+#     m = 1
+#     if n < 2:
+#         return 1
+#     return m + show_reversed_numbers(n - 1)
+#
+#
+# k = N
+# while k > 0:
+#     print(show_reversed_numbers(k), end=' ')
+#     k -= 1
+
+# 68.	Показать натуральные числа от M до N, N и M заданы
+
+
+# def show_sequence(a, b):
+#     if a == b:
+#         return b
+#     return show_sequence(a, b - 1)
+#
+#
+# m = 3
+# n = 10
+#
+#
+# for i in range(m, n + 1):
+#     print(show_sequence(i, n), end=' ')
+
+# 69.	Найти сумму элементов от M до N, N и M заданы
+
+# def show_summa(a, b):
+#     if a == b:
+#         return b
+#     return b + show_summa(a, b - 1)
+#
+#
+# m = 3
+# n = 12
+#
+# print(show_summa(m, n))
+
+# 70.	Найти сумму цифр числа
+
+
+
+
+
+
+
+
