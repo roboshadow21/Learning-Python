@@ -678,44 +678,26 @@ from itertools import count
 
 # 65.	Спирально заполнить двумерный массив:
 
-#n - размерность матрицы n x n
-#mat - результирующая матрица
-#st - текущее значение-счетчик для записи в матрицу
-#m - коеффициент, используемый для заполнения верхней
-#матрицы последующих витков, т.к. одномерные матрицы
-#следующих витков имеют меньше значений
-
-# n = int(input("Enter n: "))
-# mat = [[0] * n for i in range(n)]
-# st, m = 1, 0
-# # Заранее присваиваю значение центральному элементу
-# # матрицы
-# mat[n // 2][n // 2] = n * n
-# for v in range(n // 2):
-#     # Заполнение верхней горизонтальной матрицы
-#     for i in range(n - m):
-#         mat[v][i + v] = st
-#         st += 1
-#         # i+=1
-#     # Заполнение правой вертикальной матрицы
-#     for i in range(v + 1, n - v):
-#         mat[i][-v - 1] = st
-#         st += 1
-#         # i+=1
-#     # Заполнение нижней горизонтальной матрицы
-#     for i in range(v + 1, n - v):
-#         mat[-v - 1][-i - 1] = st
-#         st += 1
-#         # i+=1
-#     # Заполнение левой вертикальной матрицы
-#     for i in range(v + 1, n - (v + 1)):
-#         mat[-i - 1][v] = st
-#         st += 1
-#         # i+=1
-#     # v+=1
-#     m += 2
-# # Вывод результата на экран
-# for i in mat:
+# size = int(input("Enter the size of the matrix: "))
+# matrix = [[0] * size for i in range(size)]
+# value, k = 1, 0
+#
+# for v in range(size):
+#     for i in range(size - k):
+#         matrix[v][i + v] = value
+#         value += 1
+#     for i in range(v + 1, size - v):
+#         matrix[i][-v - 1] = value
+#         value += 1
+#     for i in range(v + 1, size - v):
+#         matrix[-v - 1][-i - 1] = value
+#         value += 1
+#     for i in range(v + 1, size - (v + 1)):
+#         matrix[-i - 1][v] = value
+#         value += 1
+#     k += 2
+#
+# for i in matrix:
 #     print(*i)
 
 # 66.	Показать натуральные числа от 1 до N, N задано
@@ -781,16 +763,16 @@ from itertools import count
 
 # 70.	Найти сумму цифр числа
 
-n = input('Enter number: ')
+# n = input('Enter number: ')
 
 
-def digits_summa(s):
-    if len(s) < 2:
-        return int(s[0])
-    return int(s[0]) + int(digits_summa(s[1::1]))
-
-
-print(digits_summa(n))
+# def digits_summa(s):
+#     if len(s) < 2:
+#         return int(s[0])
+#     return int(s[0]) + int(digits_summa(s[1::1]))
+#
+#
+# print(digits_summa(n))
 
 
 
