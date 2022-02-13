@@ -669,12 +669,9 @@ from itertools import count
 # n = int(input("Enter the number of rows: "))
 #
 # for i in range(n):
-#     # adjust space
 #     print(' ' * (n - i), end='')
-#
-#     # compute power of 11
 #     print(' '.join(map(str, str(11 ** i))))
-# Источник: https: // pythonpip.ru / examples / programma - python - dlya - pechati - treugolnika - paskalya
+
 
 # 65.	Спирально заполнить двумерный массив:
 
