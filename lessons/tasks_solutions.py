@@ -147,12 +147,17 @@ from decimal import Decimal
 # Для N = 5: 1, -3, 9, -27, 81 и т .д.
 
 
-# def create_list(number_elements):
-#     my_lst = [random.randint(-100, 100) for _ in range(number_elements)]
-#     return my_lst
+# def create_list(n):
+#     lst = []
+#     spam = 1
+#     for _ in range(n):
+#         lst.append(spam)
+#         spam *= -3
+#     return lst
 #
 #
 # print(create_list(5))
+
 
 # 12. Для натурального n создать словарь индекс-значение, состоящий из элементов
 # последовательности 3n + 1.
@@ -188,19 +193,52 @@ from decimal import Decimal
 #     return sum(num_list) if num_list else -1
 #
 #
-# print(digits_summa('2.3457'))
+# print(digits_summa('1.1111'))
+
+# N = str(random.random() * 100)
+# print(N)
+# summa = 0
+# for i in N:
+#     if i.isdigit():
+#         summa += int(i)
+#
+# print(summa)
+
 
 # 15. Написать программу получающую набор произведений чисел от 1 до N.
 # Пример: пусть N = 4, тогда
 # [ 1, 2, 6, 24 ]
 
+# def mutliply_numbers(n):
+#     if n < 2:
+#         return 1
+#     return n * (mutliply_numbers(n - 1) * mutliply_numbers(n - 2))
+#
+#
+# for i in range(5):
+#     print(mutliply_numbers(i), end=' ')
+
+
+# 16. Задать список из n чисел последовательности (1 + 1/n) ** n и вывести на экран их сумму
+
+# lst = []
+# n = 5
+# for i in range(1, n + 1):
+#     lst.append((1 + 1 / i) ** i)
+#
+# print(lst)
+# print(sum(lst))
+
+# 17. Задать список из N элементов, заполненных числами из [-N, N]. Найти произведение
+# элементов на указанных позициях. Позиции хранятся в файле file.txt в одной строке
+# одно число
+
+
 
 
 # 18. Реализовать алгоритм перемешивания списка.
 # li = [1, 2, 3, 4, 5, 6]
-# random.shuffle(li)
-# print(li)
-
+#
 # k = 0
 # while k != len(li) // 2:
 #     for i in range(len(li) - 1):
@@ -211,3 +249,11 @@ from decimal import Decimal
 # else:
 #     li[0], li[-1] = li[-1], li[0]
 # print(li)
+
+# 20. Определить, присутствует ли в заданном списке строк, некоторое число
+
+# li = ['az', 'zb', 'c', 'asd', '5', 'qwerty', '89']
+# num = str(89)
+# print(f'Number {num} is in list' if num in li else f'Number {num} not found')
+
+
