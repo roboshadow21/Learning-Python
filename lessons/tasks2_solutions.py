@@ -831,4 +831,10 @@ from itertools import count
 
 
 def words(s):
-    pass
+    st = ''
+    if len(s) == 1:
+        return s[0]
+    return st + ' ' + s[0] + words(s[1:]) + ' ' + s[-1] + words(s[-2::-1])
+
+
+print(words('abcd'))
