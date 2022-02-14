@@ -667,7 +667,22 @@ from itertools import count
 # 64.	Показать треугольник Паскаля *Сделать вывод в виде равнобедренного треугольника
 
 # n = int(input("Enter the number of rows: "))
+# initial_lst = []
 #
+#
+# def pascale_triangle(line):
+#     line.append(1)
+#     for i in range(1, len(line) - 1):
+#         line[i] += line[i + 1]
+#     return line
+#
+#
+# for i in range(n):
+#     triangle = pascale_triangle(initial_lst)
+#     print(' ' * (n - i), end='')
+#     print(triangle)
+
+
 # for i in range(n):
 #     print(' ' * (n - i), end='')
 #     print(' '.join(map(str, str(11 ** i))))
@@ -771,11 +786,49 @@ from itertools import count
 #
 # print(digits_summa(n))
 
+# 71.	Написать программу вычисления функции Аккермана
+
+# def akk(m, n):
+#     if m == 0:
+#         return n + 1
+#     elif m > 0 and n == 0:
+#         return akk(m - 1, 1)
+#     return akk(m - 1, akk(m, n - 1))
+#
+#
+# print(akk(1, 2))
+
+# 72.	Написать программу возведения числа А в целую стень B
+
+# def raise_to_power(a, b):
+#     if b < 2:
+#         return a
+#     return a * raise_to_power(a, b - 1)
+#
+#
+# print(raise_to_power(2, 8))
+
+# 73.	Написать программу показывающие первые N чисел, для которых каждое следующее равно сумме двух предыдущих.
+# Первые два элемента последовательности задаются пользователем
+
+# n = int(input('Enter the first number of the sequence: '))
+# m = int(input('Enter the second number of the sequence: '))
+#
+#
+# def fib_arbitrary_elements(a, b, k):
+#     if k < a:
+#         return a
+#     elif k < b:
+#         return b
+#     return fib_arbitrary_elements(a, b, k - 1) + fib_arbitrary_elements(a, b, k - 2)
+#
+#
+# for i in range(n - 1, 12):
+#     print(fib_arbitrary_elements(n, m, i), end=' ')
+
+# 74.	В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в».
+# Покажите все слова, состоящие из n букв, которые можно построить из букв этого алфавита
 
 
-
-
-
-
-
-
+def words(s):
+    pass
