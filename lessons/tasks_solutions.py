@@ -1,6 +1,8 @@
 import random
 import math
+import time
 from decimal import Decimal
+from collections import deque
 # Семинар 1-2: примерный список задач
 
 # 1. По двум заданным числам проверить является ли одно квадратом второго
@@ -195,7 +197,8 @@ from decimal import Decimal
 #
 # print(digits_summa('1.1111'))
 
-# N = str(random.random() * 100)
+
+# N = str(1.1111)
 # print(N)
 # summa = 0
 # for i in N:
@@ -209,31 +212,48 @@ from decimal import Decimal
 # Пример: пусть N = 4, тогда
 # [ 1, 2, 6, 24 ]
 
-# def mutliply_numbers(n):
-#     if n < 2:
-#         return 1
-#     return n * (mutliply_numbers(n - 1) * mutliply_numbers(n - 2))
+
+# def multiply_sequence(num):
+#     lst = [1]
+#     for i in range(1, num):
+#         lst.append(lst[-1] * (i + 1))
+#     return lst
 #
 #
-# for i in range(5):
-#     print(mutliply_numbers(i), end=' ')
+# print(multiply_sequence(4))
 
 
 # 16. Задать список из n чисел последовательности (1 + 1/n) ** n и вывести на экран их сумму
 
-# lst = []
-# n = 5
-# for i in range(1, n + 1):
-#     lst.append((1 + 1 / i) ** i)
+
+# def numbers_sequence(n):
+#     lst = []
+#     for i in range(1, n + 1):
+#         lst.append((1 + 1 / i) ** i)
+#     return sum(lst)
 #
-# print(lst)
-# print(sum(lst))
+#
+# print(numbers_sequence(5))
+
 
 # 17. Задать список из N элементов, заполненных числами из [-N, N]. Найти произведение
-# элементов на указанных позициях. Позиции хранятся в файле file.txt в одной строке
-# одно число
+# элементов на указанных позициях. Позиции хранятся в файле file.txt в одной строке одно число
 
-
+# pos = '7\n9'
+# with open('test.txt', 'w', encoding='utf-8') as f:
+#     f.write(pos)
+#
+# n = 5
+# lst = [i for i in range(-n, n + 1)]
+# print(lst)
+# res = 1
+#
+# with open('test.txt', encoding='utf-8') as f:
+#     for idx in f.readlines():
+#         print(f'Number on positions {idx}')
+#         res *= lst[int(idx)]
+#
+# print(f'The result of multiplication = {res}')
 
 
 # 18. Реализовать алгоритм перемешивания списка.
@@ -250,10 +270,115 @@ from decimal import Decimal
 #     li[0], li[-1] = li[-1], li[0]
 # print(li)
 
+# 19. Реализовать алгоритм задания случайных чисел. Без использования встроенного
+# генератора псевдослучайных чисел
+
+
+# def rand_numbers(start, stop):
+#     num = time.time()
+#     delta = stop - start
+#     rnd = float(str(num)[::-1][:3]) / 1000
+#     return round(rnd * delta)
+#
+#
+# print(rand_numbers(1, 20))
+
 # 20. Определить, присутствует ли в заданном списке строк, некоторое число
 
 # li = ['az', 'zb', 'c', 'asd', '5', 'qwerty', '89']
-# num = str(89)
+# num = str(5)
 # print(f'Number {num} is in list' if num in li else f'Number {num} not found')
 
+
+# 21. Определить, позицию второго вхождения строки в списке либо сообщить, что её нет .
+# Примеры
+# список: ["qwe", "asd", "zxc", "qwe", "ertqwe"], ищем: "qwe", ответ: 3
+# список: ["йцу", "фыв", "ячс", "цук", "йцукен", "йцу"], ищем: "йцу", ответ: 5
+# список: ["йцу", "фыв", "ячс", "цук", "йцукен"], ищем: "йцу", ответ: -1
+# список: ["123", "234", 123, "567"], ищем: "123", ответ: -1
+# список: [], ищем: "123", ответ: -1
+
+# li = ["qwe", "asd", "zxc", "qwe", "ertqwe"]
+# li = ["йцу", "фыв", "ячс", "цук", "йцукен", "йцу"]
+# li = ["йцу", "фыв", "ячс", "цук", "йцукен"]
+# li = ["123", "234", 123, "567"]
+# li = []
+# sub_str = 'qwe'
+# sub_str = "йцу"
+# sub_str = "123"
+
+
+# if not li:
+#     print('-1')
+# else:
+#     for line in li:
+#         try:
+#             first = li.index(sub_str)
+#             second = li[first + 1:].index(sub_str) + 1
+#             print(f'The index of the second match - {second}')
+#             break
+#         except ValueError as err:
+#             print(-1, err)
+#             break
+
+# 22. Найти сумму чисел списка стоящих на нечетной позиции
+
+# lst = [1, 2, 3, 4, 5, 6, 7, 8]
+# res = sum(list(filter(lambda x: lst.index(x) % 2 != 0, lst)))
+# print(res)
+
+# 23. Найти произведение пар чисел в списке. Парой считаем первый и последний элемент ,
+# второй и предпоследний и т .д. Пример: [2, 3, 4, 5, 6] => [12, 15, 16]; [2, 3, 5, 6] => [12,15]
+
+# li = [2, 3, 4, 5, 6]
+# li = [2, 3, 5, 6]
+
+# length = len(li) // 2
+# i = 0
+# j = -1
+# res = []
+# while i <= length:
+#     temp = li[i] * li[j]
+#     res.append(temp)
+#     i += 1
+#     j -= 1
+# print(sorted(list(set(res))))
+
+# 24. В заданном списке вещественных чисел найдите разницу между максимальным и
+# минимальным значением дробной части элементов. Пример: [1.1, 1.2, 3.1, 5, 10.01] => 0.19
+
+# li = [1.1, 1.2, 3.1, 5, 10.01]
+# li1 = []
+# for i in range(len(li)):
+#     temp = abs(int(li[i]) - li[i])
+#     li1.append(temp)
+#
+# res = str(max(li1) - min(li1))
+# print(res[0:4])
+
+# 25. Написать программу преобразования десятичного числа в двоичное
+
+# number = int(input('Enter a number to convert to binary: '))
+# deq = deque()
+# while number:
+#     deq.appendleft(number % 2)
+#     number //= 2
+#
+# print(''.join(list(map(str, deq))))
+
+# 26. Дано число. Составить список чисел Фибоначчи, в том числе для отрицательных индексов.
+# Т е для k = 8, список будет выглядеть так: [-21 ,13, -8, 5, −3,  2, −1,  1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
+
+# m = 1
+# n = 1
+# li = []
+# for i in range(9):
+#     temp = m - n
+#     li.append(temp)
+#     # temp = m + n
+#     m = n
+#     n = temp
+#     print(temp, end=' ')
+#
+# print(list(reversed(li)))
 
