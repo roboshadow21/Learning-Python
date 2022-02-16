@@ -369,16 +369,76 @@ from collections import deque
 # 26. Дано число. Составить список чисел Фибоначчи, в том числе для отрицательных индексов.
 # Т е для k = 8, список будет выглядеть так: [-21 ,13, -8, 5, −3,  2, −1,  1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
 
-# m = 1
-# n = 1
-# li = []
-# for i in range(9):
-#     temp = m - n
-#     li.append(temp)
-#     # temp = m + n
-#     m = n
-#     n = temp
-#     print(temp, end=' ')
+# def nega_fib(k):
+#     li = []
+#     m = 1
+#     n = 1
+#     for i in range(k + 1):
+#         temp = m - n
+#         li.append(temp)
+#         m = n
+#         n = temp
+#     return list(reversed(li))
 #
-# print(list(reversed(li)))
+#
+# negative = nega_fib(8)
+#
+#
+# def fib(k):
+#     li2 = []
+#     m = 1
+#     n = 1
+#     li2.append(m)
+#     li2.append(n)
+#     for i in range(k - 2):
+#         temp = m + n
+#         li2.append(temp)
+#         m = n
+#         n = temp
+#     return li2
+#
+#
+# positive = fib(8)
+# negative.extend(positive)
+# print(negative)
 
+# 27. Строка содержит набор чисел. Показать большее и меньшее число
+# Символ-разделитель - пробел
+
+# s = '12 4 7 2 56 3 21 89 32 17'
+# li = list(map(lambda x: int(x), s.split()))
+# print(f'Larger number = {max(li)}, smaller number = {min(li)}')
+
+# 28. Найти корни квадратного уравнения Ax² + Bx + C = 0
+# a. Математикой
+# b. Используя дополнительные библиотеки*
+
+# def quadratic_equation(a, b, c):
+#     discriminant = b ** 2 - (4 * a * c)
+#     if discriminant < 0:
+#         return f'No roots'
+#     elif discriminant == 0:
+#         x = (-b) / 2 * a
+#         return x
+#     else:
+#         x1 = (-b - (discriminant ** 0.5)) / (2 * a)
+#         x2 = (-b + (discriminant ** 0.5)) / (2 * a)
+#         return x1, x2
+
+
+# print(quadratic_equation(2, 5, -7))
+
+# def quadratic_equation_lib(a, b, c):
+#     discriminant = math.pow(b, 2) - (4 * a * c)
+#     if discriminant < 0:
+#         return f'No roots'
+#     elif discriminant == 0:
+#         x = (-b) / 2 * a
+#         return x
+#     else:
+#         x1 = (-b - math.sqrt(discriminant)) / (2 * a)
+#         x2 = (-b + math.sqrt(discriminant)) / (2 * a)
+#         return x1, x2
+#
+#
+# print(quadratic_equation_lib(2, 5, -7))
