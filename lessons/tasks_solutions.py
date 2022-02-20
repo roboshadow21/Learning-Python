@@ -463,7 +463,21 @@ from collections import deque
 # pi = math.pi
 # print(str(pi)[:d])
 
+# 31. Составить список простых множителей натурального числа
 
+# def prime_factors(n):
+#     li = []
+#     count = 2
+#     while n > 1:
+#         if n % count != 0:
+#             count += 1
+#         else:
+#             n /= count
+#             li.append(count)
+#     return li
+#
+#
+# print(prime_factors(99))
 
 
 # 32. Дана последовательность чисел. Получить список неповторяющихся элементов
@@ -472,3 +486,20 @@ from collections import deque
 
 # li = [1, 2, 3, 5, 1, 5, 3, 10]
 # print(list(set(li)))
+
+# 33. Задана натуральная степень k. Сформировать случайным образом список
+# коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен
+# степени k. *Пример: k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
+
+# k = 2
+# lst = [random.randint(0, 100) for i in range(3)]
+# print(lst)
+#
+# a = lst[0]
+# b = lst[1]
+# c = lst[2]
+# text = f'{a} * x ^ {k} + {b} * x + {c} = 0'
+# print(text)
+# with open('test.txt', 'w', encoding='utf-8') as f:
+#     f.write(text)
+
