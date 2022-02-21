@@ -507,12 +507,15 @@ from collections import deque
 # 34. Даны два файла в каждом из которых находится запись многочлена. Сформировать
 # файл содержащий сумму многочленов.
 
-s1 = '2x^2 + 3x + 5'
-s2 = '4x^2 + 4x + 3'
+# import sympy
+# x = sympy.symbols('x')
+# s1 = '3*x**2 + 3*x + 5'
+# s2 = '2*x**2 + 4*x + 3'
+# print(sympy.expand(s1))
+# print(sympy.factor(s1 + s2))
+# print(sympy.cancel(s1 + s2))
 
 # res = 6x^2 + 7x + 8
-
-
 
 
 # 35. В файле находится N натуральных чисел, записанных через пробел. Среди чисел не
@@ -566,9 +569,17 @@ seq1 = li[:lst[0] + 1]
 seq2 = li[lst[0] + 1:lst[1] + 1]
 seq3 = li[lst[1] + 1:]
 
-# print(seq1)
-# print(seq2)
-# print(seq3)
+res = [seq1, seq2, seq3]
+for i in range(len(res)):
+    if len(res[0]) < len(res[i]):
+        res[0].pop(-1)
+        res[0].extend(res[i])
+    elif len(res[0]) > len(res[i]):
+        res[i].pop(0)
+        res[0].extend(res[i])
+
+
+# print(res[0])
 
 # if len(seq1) < len(seq2):
 #     seq1.pop(-1)
@@ -609,7 +620,7 @@ def summa(x, y):
 
 
 operators = {'*': mul, '-': sub, '+': summa}
-# m, n = 0, 0
+
 s = '2*3+3'
 temp = 0
 for el in s:
@@ -617,11 +628,14 @@ for el in s:
         temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
 
 # print(temp)
+s = str(temp) + s[s.index('*') + 2:]
+# print(s)
 for el in s:
     if operators.get('+'):
-        temp += operators['+'](int(s[s.index('+') - 1]), int(s[s.index('+') + 1]))
+        temp = operators['+'](int(s[s.index('+') - 1]), int(s[s.index('+') + 1]))
 
-# print(temp)
+s = str(temp)
+# print(s)
 
 # 43. Дана последовательность чисел. Получить список уникальных элементов заданной
 # последовательности.
