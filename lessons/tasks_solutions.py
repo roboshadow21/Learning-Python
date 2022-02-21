@@ -1,6 +1,7 @@
 import random
 import math
 import time
+import re
 from decimal import Decimal
 from collections import deque
 # Семинар 1-2: примерный список задач
@@ -580,10 +581,13 @@ seq3 = li[lst[1] + 1:]
 
 # 38. Напишите программу , удаляющую из текста все слова содержащие "абв".
 
-text = 'абвгд про укпллвд молекабв цукыв'
-# res = text.replace('абв', '')
-# print(res)
-
+# text = 'абвгд про укпллвд молекабв цукыв фвррв укабвнел'
+# print(text)
+# pattern = 'абв'
+# li = text.split()
+#
+# lst = [li[i] for i in range(len(li)) if not re.findall(pattern, li[i])]
+# print(' '.join(lst))
 
 # 41. Написать программу вычисления арифметического выражения заданного строкой.
 # Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4;
@@ -625,8 +629,8 @@ for el in s:
 
 li = [1, 2, 3, 5, 1, 5, 3, 10]
 
-res = list(filter(lambda x: li.count(x) == 1, li))
-print(res)
+# res = list(filter(lambda x: li.count(x) == 1, li))
+# print(res)
 
 # lst = []
 # for i in range(len(li)):
