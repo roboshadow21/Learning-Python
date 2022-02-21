@@ -503,3 +503,149 @@ from collections import deque
 # with open('test.txt', 'w', encoding='utf-8') as f:
 #     f.write(text)
 
+# 34. Даны два файла в каждом из которых находится запись многочлена. Сформировать
+# файл содержащий сумму многочленов.
+
+s1 = '2x^2 + 3x + 5'
+s2 = '4x^2 + 4x + 3'
+
+# res = 6x^2 + 7x + 8
+
+
+# 35. В файле находится N натуральных чисел, записанных через пробел. Среди чисел не
+# хватает одного, чтобы выполнялось условие A[i] - 1 =  A[i-1]. Найти его.
+
+# with open('numbers.txt', encoding='utf-8') as f:
+#     s = f.read().split()
+#
+# print(s)
+#
+# for i in range(1, len(s)):
+#     if int(s[i]) - 1 != int(s[i - 1]):
+#         print(f'Missing number is - {int(s[i]) - 1}')
+#         break
+
+# 36. Дан список чисел. Создать список, в который попадают числа, описываемые
+# возрастающую последовательность. Пример: [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3] или [1, 7]
+# или [1, 6, 7] и т.д. Порядок элементов менять нельзя
+
+# li = [1, 5, 2, 3, 4, 6, 1, 7]
+# lst = []
+#
+# i = 0
+# while i < len(li):
+#     if li[i] == min(li[i:]) and li[i] not in lst:
+#         lst.append(li[i])
+#     i += 1
+#
+# print(lst)
+
+# i = 1
+# lst.append(li[0])
+# while i < len(li) - 1:
+#     if li[i - 1] < li[i] < li[i + 1]:
+#         lst.append(li[i - 1])
+#     i += 1
+#
+# print(lst)
+
+# 37. Дан список чисел. Создать список в который попадают числа, описываемые
+# возрастающую последовательность и содержащие максимальное количество
+# элементов.
+# Пример: [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3, 4, 6, 7]
+# [5, 2, 3, 4, 6, 1, 7] => [2, 3, 4, 6, 7]
+
+li = [1, 5, 2, 3, 4, 6, 1, 7]
+# li = [5, 2, 3, 4, 6, 1, 7]
+
+lst = [i for i in range(len(li) - 1) if li[i] > li[i + 1]]
+seq1 = li[:lst[0] + 1]
+seq2 = li[lst[0] + 1:lst[1] + 1]
+seq3 = li[lst[1] + 1:]
+
+# print(seq1)
+# print(seq2)
+# print(seq3)
+
+# if len(seq1) < len(seq2):
+#     seq1.pop(-1)
+#     seq1.extend(seq2)
+# if len(seq1) > len(seq3):
+#     seq3.pop(0)
+#     seq1.extend(seq3)
+# print(seq1)
+
+
+
+# for i in range(len(li) - 1):
+#     if li[i] < li[i + 1] and li[i] not in lst:
+#         lst.append(li[i])
+# else:
+#     if li[-1] > lst[-1]:
+#         lst.append(li[-1])
+
+# i = 0
+# if li[0] < li[1]:
+#     lst.append(li[0])
+# else:
+#     lst.append(li[1])
+# i = 1
+# while i < len(li) - 1:
+#     if lst[0] < li[i] < li[i + 1]:
+#         lst.append(li[i])
+#     i += 1
+# print(lst)
+
+# 38. Напишите программу , удаляющую из текста все слова содержащие "абв".
+
+text = 'абвгд про укпллвд молекабв цукыв'
+# res = text.replace('абв', '')
+# print(res)
+
+
+# 41. Написать программу вычисления арифметического выражения заданного строкой.
+# Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4;
+# 1+2*3 => 7; 1-2*3 => -5;
+# a. Добавить возможность использования скобок, меняющих приоритет операций.
+# Пример: 1+2*3 => 7; (1+2)*3 => 9;
+
+
+def mul(x, y):
+    return x * y
+
+
+def sub(x, y):
+    return x - y
+
+
+def summa(x, y):
+    return x + y
+
+
+operators = {'*': mul, '-': sub, '+': summa}
+# m, n = 0, 0
+s = '2*3+3'
+temp = 0
+for el in s:
+    if operators.get('*'):
+        temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
+
+# print(temp)
+for el in s:
+    if operators.get('+'):
+        temp += operators['+'](int(s[s.index('+') - 1]), int(s[s.index('+') + 1]))
+
+# print(temp)
+
+# 43. Дана последовательность чисел. Получить список уникальных элементов заданной
+# последовательности.
+# Пример: [1, 2, 3, 5, 1, 5, 3, 10] => [2, 10]
+
+li = [1, 2, 3, 5, 1, 5, 3, 10]
+lst = []
+for i in range(len(li)):
+    if li.count(li[i]) > 1:
+        continue
+    else:
+        lst.append(li[i])
+print(lst)
