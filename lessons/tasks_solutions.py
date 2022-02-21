@@ -2,6 +2,7 @@ import random
 import math
 import time
 import re
+import sympy
 from decimal import Decimal
 from collections import deque
 # Семинар 1-2: примерный список задач
@@ -455,6 +456,7 @@ from collections import deque
 #             n -= m
 #     return m
 #
+#
 # print(find_divider(25, 75))
 
 # 30. Вычислить число c заданной точностью d π
@@ -492,22 +494,27 @@ from collections import deque
 # коэффициентов (значения от 0 до 100) многочлена и записать в файл многочлен
 # степени k. *Пример: k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 
-# k = 2
-# lst = [random.randint(0, 100) for i in range(3)]
+# k = 3
+# lst = [random.randint(0, 100) for i in range(k + 1)]
 # print(lst)
 #
-# a = lst[0]
-# b = lst[1]
-# c = lst[2]
-# text = f'{a} * x ^ {k} + {b} * x + {c} = 0'
+# li = []
+# for i in range(len(lst)):
+#     li.append(str(lst[i]) + '*x ^ ' + str(k - i) + ' + ')
+#
+# li.pop()
+# li.append(str(lst[-1]))
+# li.append(' = 0')
+# text = ''.join(li)
 # print(text)
+#
+#
 # with open('test.txt', 'w', encoding='utf-8') as f:
 #     f.write(text)
 
 # 34. Даны два файла в каждом из которых находится запись многочлена. Сформировать
 # файл содержащий сумму многочленов.
 
-# import sympy
 # x = sympy.symbols('x')
 # s1 = '3*x**2 + 3*x + 5'
 # s2 = '2*x**2 + 4*x + 3'
@@ -532,28 +539,24 @@ from collections import deque
 #         break
 
 # 36. Дан список чисел. Создать список, в который попадают числа, описываемые
-# возрастающую последовательность. Пример: [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3] или [1, 7]
+# возрастающую последовательность. Пример: [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3, 4] или [1, 7]
 # или [1, 6, 7] и т.д. Порядок элементов менять нельзя
 
-# li = [1, 5, 2, 3, 4, 6, 1, 7]
-# lst = []
-#
-# i = 0
-# while i < len(li):
-#     if li[i] == min(li[i:]) and li[i] not in lst:
+li = [1, 5, 2, 3, 4, 6, 1, 7]
+lst = []
+
+# for i in range(len(li) - 1):
+#     if li[i] < li[i + 1] and li[i] not in lst:
 #         lst.append(li[i])
-#     i += 1
-#
-# print(lst)
 
 # i = 1
 # lst.append(li[0])
 # while i < len(li) - 1:
 #     if li[i - 1] < li[i] < li[i + 1]:
-#         lst.append(li[i - 1])
+#         lst.append(li[i])
 #     i += 1
-#
-# print(lst)
+
+print(lst)
 
 # 37. Дан список чисел. Создать список в который попадают числа, описываемые
 # возрастающую последовательность и содержащие максимальное количество
@@ -561,22 +564,22 @@ from collections import deque
 # Пример: [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3, 4, 6, 7]
 # [5, 2, 3, 4, 6, 1, 7] => [2, 3, 4, 6, 7]
 
-li = [1, 5, 2, 3, 4, 6, 1, 7]
+# li = [1, 5, 2, 3, 4, 6, 1, 7]
 # li = [5, 2, 3, 4, 6, 1, 7]
 
-lst = [i for i in range(len(li) - 1) if li[i] > li[i + 1]]
-seq1 = li[:lst[0] + 1]
-seq2 = li[lst[0] + 1:lst[1] + 1]
-seq3 = li[lst[1] + 1:]
-
-res = [seq1, seq2, seq3]
-for i in range(len(res)):
-    if len(res[0]) < len(res[i]):
-        res[0].pop(-1)
-        res[0].extend(res[i])
-    elif len(res[0]) > len(res[i]):
-        res[i].pop(0)
-        res[0].extend(res[i])
+# lst = [i for i in range(len(li) - 1) if li[i] > li[i + 1]]
+# seq1 = li[:lst[0] + 1]
+# seq2 = li[lst[0] + 1:lst[1] + 1]
+# seq3 = li[lst[1] + 1:]
+#
+# res = [seq1, seq2, seq3]
+# for i in range(len(res)):
+#     if len(res[0]) < len(res[i]):
+#         res[0].pop(-1)
+#         res[0].extend(res[i])
+#     elif len(res[0]) > len(res[i]):
+#         res[i].pop(0)
+#         res[0].extend(res[i])
 
 
 # print(res[0])
