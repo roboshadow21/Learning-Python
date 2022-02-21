@@ -512,6 +512,8 @@ s2 = '4x^2 + 4x + 3'
 # res = 6x^2 + 7x + 8
 
 
+
+
 # 35. В файле находится N натуральных чисел, записанных через пробел. Среди чисел не
 # хватает одного, чтобы выполнялось условие A[i] - 1 =  A[i-1]. Найти его.
 
@@ -576,26 +578,6 @@ seq3 = li[lst[1] + 1:]
 # print(seq1)
 
 
-
-# for i in range(len(li) - 1):
-#     if li[i] < li[i + 1] and li[i] not in lst:
-#         lst.append(li[i])
-# else:
-#     if li[-1] > lst[-1]:
-#         lst.append(li[-1])
-
-# i = 0
-# if li[0] < li[1]:
-#     lst.append(li[0])
-# else:
-#     lst.append(li[1])
-# i = 1
-# while i < len(li) - 1:
-#     if lst[0] < li[i] < li[i + 1]:
-#         lst.append(li[i])
-#     i += 1
-# print(lst)
-
 # 38. Напишите программу , удаляющую из текста все слова содержащие "абв".
 
 text = 'абвгд про укпллвд молекабв цукыв'
@@ -642,10 +624,14 @@ for el in s:
 # Пример: [1, 2, 3, 5, 1, 5, 3, 10] => [2, 10]
 
 li = [1, 2, 3, 5, 1, 5, 3, 10]
-lst = []
-for i in range(len(li)):
-    if li.count(li[i]) > 1:
-        continue
-    else:
-        lst.append(li[i])
-print(lst)
+
+res = list(filter(lambda x: li.count(x) == 1, li))
+print(res)
+
+# lst = []
+# for i in range(len(li)):
+#     if li.count(li[i]) > 1:
+#         continue
+#     else:
+#         lst.append(li[i])
+# print(lst)
