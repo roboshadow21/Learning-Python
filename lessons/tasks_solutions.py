@@ -515,14 +515,63 @@ from collections import deque
 # 34. Даны два файла в каждом из которых находится запись многочлена. Сформировать
 # файл содержащий сумму многочленов.
 
-# x = sympy.symbols('x')
-# s1 = '3*x**2 + 3*x + 5'
-# s2 = '2*x**2 + 4*x + 3'
-# print(sympy.expand(s1))
-# print(sympy.factor(s1 + s2))
-# print(sympy.cancel(s1 + s2))
+# s1 = '73*x^4+4*x^3+6*x^2+3*x+5=0'
+# s2 = '5*x^3+2*x^2+4*x+5=0'
 
-# res = 6x^2 + 7x + 8
+# with open('poly1.txt', encoding='utf-8') as f:
+#     poly1 = f.read().replace('=0', '')
+#
+# with open('poly2.txt', encoding='utf-8') as f:
+#     poly2 = f.read().replace('=0', '')
+#
+#
+# def create_poly_list(st: str) -> list:
+#     poly_lst = []
+#     for i in range(len(st)):
+#         if st[i] == 'x' and st[i - 1] != '*':
+#             poly_lst.append('1')
+#             poly_lst.append('*')
+#             poly_lst.append('x')
+#         else:
+#             poly_lst.append(st[i])
+#     return poly_lst
+#
+#
+# poly_lst1 = create_poly_list(poly1)
+# poly_lst2 = create_poly_list(poly2)
+#
+#
+# def check_length(p1: list, p2: list):
+#     res = []
+#     if p1 > p2:
+#         delta = len(p1) - len(p2)
+#         res.append(p1[:delta])
+#         p1 = p1[delta:]
+#     elif p2 > p1:
+#         delta = len(p2) - len(p1)
+#         res.append(p2[:delta])
+#         p2 = p2[delta:]
+#     return p1, p2, res
+#
+#
+# pol1, pol2, res = check_length(poly_lst1, poly_lst2)
+#
+#
+# def poly_summa(p1: list, p2: list, result_list: list) -> list:
+#     for i in range(len(p1)):
+#         if p1[i].isdigit() and p1[i - 1] != '^':
+#             temp = int(p1[i]) + int(p2[i])
+#             result_list.append(str(temp))
+#         else:
+#             result_list.append(p1[i])
+#     return result_list
+#
+#
+# summa = ''.join(poly_summa(pol1, pol2, *res)) + ' = 0'
+# print(summa)
+#
+# with open('poly_summa.txt', 'w', encoding='utf-8') as f:
+#     f.write(summa)
 
 
 # 35. В файле находится N натуральных чисел, записанных через пробел. Среди чисел не
@@ -542,8 +591,8 @@ from collections import deque
 # возрастающую последовательность. Пример: [1, 5, 2, 3, 4, 6, 1, 7] => [1, 2, 3, 4] или [1, 7]
 # или [1, 6, 7] и т.д. Порядок элементов менять нельзя
 
-li = [1, 5, 2, 3, 4, 6, 1, 7]
-lst = []
+# li = [1, 5, 2, 3, 4, 6, 1, 7]
+# lst = []
 
 # for i in range(len(li) - 1):
 #     if li[i] < li[i + 1] and li[i] not in lst:
@@ -556,7 +605,7 @@ lst = []
 #         lst.append(li[i])
 #     i += 1
 
-print(lst)
+# print(lst)
 
 # 37. Дан список чисел. Создать список в который попадают числа, описываемые
 # возрастающую последовательность и содержащие максимальное количество
@@ -603,6 +652,12 @@ print(lst)
 # lst = [li[i] for i in range(len(li)) if not re.findall(pattern, li[i])]
 # print(' '.join(lst))
 
+# 39. Помните игру с конфетами из модуля "Математика и Информатика"? Создайте такую
+# игру для игры человек против человека
+# a. Добавьте игру против бота
+# b. Подумайте как наделить бота "интеллектом"
+
+
 # 41. Написать программу вычисления арифметического выражения заданного строкой.
 # Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4;
 # 1+2*3 => 7; 1-2*3 => -5;
@@ -625,20 +680,24 @@ def summa(x, y):
 operators = {'*': mul, '-': sub, '+': summa}
 
 s = '2*3+3'
-temp = 0
-for el in s:
-    if operators.get('*'):
-        temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
+elements = [el for el in s]
+# print(elements)
 
-# print(temp)
-s = str(temp) + s[s.index('*') + 2:]
-# print(s)
-for el in s:
-    if operators.get('+'):
-        temp = operators['+'](int(s[s.index('+') - 1]), int(s[s.index('+') + 1]))
 
-s = str(temp)
-# print(s)
+# temp = 0
+# for el in s:
+#     if operators.get('*'):
+#         temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
+#
+# # print(temp)
+# s = str(temp) + s[s.index('*') + 2:]
+# # print(s)
+# for el in s:
+#     if operators.get('+'):
+#         temp = operators['+'](int(s[s.index('+') - 1]), int(s[s.index('+') + 1]))
+#
+# s = str(temp)
+# # print(s)
 
 # 43. Дана последовательность чисел. Получить список уникальных элементов заданной
 # последовательности.
