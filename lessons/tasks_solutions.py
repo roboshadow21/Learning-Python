@@ -614,33 +614,30 @@ from collections import deque
 # [5, 2, 3, 4, 6, 1, 7] => [2, 3, 4, 6, 7]
 
 # li = [1, 5, 2, 3, 4, 6, 1, 7]
-# li = [5, 2, 3, 4, 6, 1, 7]
+li = [5, 2, 3, 4, 6, 1, 7]
 
-# lst = [i for i in range(len(li) - 1) if li[i] > li[i + 1]]
-# seq1 = li[:lst[0] + 1]
-# seq2 = li[lst[0] + 1:lst[1] + 1]
-# seq3 = li[lst[1] + 1:]
-#
-# res = [seq1, seq2, seq3]
-# for i in range(len(res)):
-#     if len(res[0]) < len(res[i]):
-#         res[0].pop(-1)
-#         res[0].extend(res[i])
-#     elif len(res[0]) > len(res[i]):
-#         res[i].pop(0)
-#         res[0].extend(res[i])
+lst = [i for i in range(len(li) - 1) if li[i] > li[i + 1]]
+# print(lst)
 
+seq1 = li[:lst[0] + 1]
+seq2 = li[lst[0] + 1:lst[1] + 1]
+seq3 = li[lst[1] + 1:]
 
-# print(res[0])
-
-# if len(seq1) < len(seq2):
-#     seq1.pop(-1)
-#     seq1.extend(seq2)
-# if len(seq1) > len(seq3):
-#     seq3.pop(0)
-#     seq1.extend(seq3)
 # print(seq1)
+# print(seq2)
+# print(seq3)
 
+res = [seq1, seq2, seq3]
+for i in range(len(res)):
+    if len(res[0]) < len(res[i]):
+        res[0].pop(-1)
+        res[0].extend(res[i])
+    elif len(res[0]) > len(res[i]):
+        res[i].pop(0)
+        res[0].extend(res[i])
+
+
+print(res[0])
 
 # 38. Напишите программу , удаляющую из текста все слова содержащие "абв".
 
@@ -656,6 +653,55 @@ from collections import deque
 # игру для игры человек против человека
 # a. Добавьте игру против бота
 # b. Подумайте как наделить бота "интеллектом"
+
+# def game(total):
+#     print(f'There ara {total} candies')
+#     while total > 0:
+#         num = int(input('Select the number in the range 3 to 6: '))
+#         total -= num
+#         if total <= 0:
+#             print('You loose!')
+#         else:
+#             print(f'There ara {total} candies left')
+#
+#
+# game(20)
+
+# def game_with_bot(total):
+#     minimum = 3
+#     maximum = 6
+#     print(f'There are {total} candies')
+#     while total > 0:
+#         num = int(input('Select the number in the range 3 to 6: '))
+#         total -= num
+#         if total <= 0:
+#             print('You loose!')
+#             break
+#         else:
+#             print(f'There are {total} candies left')
+#         time.sleep(1)
+#         print('AI is running')
+#         time.sleep(1)
+#         if total <= maximum:
+#             num = minimum
+#             time.sleep(1)
+#             print(f'AI choice is - {num}')
+#             total -= num
+#             time.sleep(1)
+#             if total <= 0:
+#                 print('AI loose!')
+#                 break
+#             else:
+#                 print(f'There are {total} candies left')
+#         else:
+#             num = random.choice(range(minimum, maximum + 1))
+#             print(f'AI choice is - {num}')
+#             total -= num
+#             time.sleep(1)
+#             print(f'There are {total} candies left')
+#
+#
+# game_with_bot(20)
 
 
 # 41. Написать программу вычисления арифметического выражения заданного строкой.
@@ -698,6 +744,10 @@ elements = [el for el in s]
 #
 # s = str(temp)
 # # print(s)
+
+# 42. Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
+# a. входные и выходные данные хранятся в отдельных файлах
+
 
 # 43. Дана последовательность чисел. Получить список уникальных элементов заданной
 # последовательности.
