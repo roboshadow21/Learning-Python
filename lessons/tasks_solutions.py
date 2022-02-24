@@ -637,7 +637,7 @@ for i in range(len(res)):
         res[0].extend(res[i])
 
 
-print(res[0])
+# print(res[0])
 
 # 38. Напишите программу , удаляющую из текста все слова содержащие "абв".
 
@@ -747,6 +747,49 @@ elements = [el for el in s]
 
 # 42. Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
 # a. входные и выходные данные хранятся в отдельных файлах
+
+# with open('encoding_string.txt', encoding='utf-8') as f:
+#     text = f.read()
+#
+#
+# def encode(s: str):
+#     st = ''
+#     count = 0
+#     previous = ''
+#     for i in range(len(s) - 1):
+#         previous = s[i]
+#         count += 1
+#         if s[i + 1] != previous:
+#             st += str(count) + s[i]
+#             previous = s[i + 1]
+#             count = 0
+#     else:
+#         count += 1
+#         st += str(count) + previous
+#     return st
+#
+#
+# print(encode(text))
+# encode_st = encode(text)
+#
+# with open('decoding_string.txt', 'w', encoding='utf-8') as f:
+#     f.write(encode_st)
+#
+# with open('decoding_string.txt', encoding='utf-8') as f:
+#     decode_st = f.read()
+#
+#
+# def decode(s: str):
+#     st = ''
+#     for i in range(len(s)):
+#         if s[i].isdigit():
+#             st += s[i + 1] * int(s[i])
+#     return st
+#
+#
+# print(decode(decode_st))
+
+
 
 
 # 43. Дана последовательность чисел. Получить список уникальных элементов заданной
