@@ -657,25 +657,26 @@ for i in range(len(res)):
 # def game(total):
 #     print(f'There ara {total} candies')
 #     while total > 0:
-#         num = int(input('Select the number in the range 3 to 6: '))
+#         num = int(input('Select the number in the range 1 to 6: '))
 #         total -= num
 #         if total <= 0:
-#             print('You loose!')
+#             print('You win!')
 #         else:
 #             print(f'There ara {total} candies left')
 #
 #
-# game(20)
+# game(21)
 
 # def game_with_bot(total):
-#     minimum = 3
+#     minimum = 1
 #     maximum = 6
 #     print(f'There are {total} candies')
 #     while total > 0:
-#         num = int(input('Select the number in the range 3 to 6: '))
+#         num = int(input('Select the number in the range 1 to 6: '))
+#         assert num <= 6, 'The number should not be larger then 6'
 #         total -= num
 #         if total <= 0:
-#             print('You loose!')
+#             print('You win!')
 #             break
 #         else:
 #             print(f'There are {total} candies left')
@@ -689,7 +690,7 @@ for i in range(len(res)):
 #             total -= num
 #             time.sleep(1)
 #             if total <= 0:
-#                 print('AI loose!')
+#                 print('AI win!')
 #                 break
 #             else:
 #                 print(f'There are {total} candies left')
@@ -711,31 +712,34 @@ for i in range(len(res)):
 # Пример: 1+2*3 => 7; (1+2)*3 => 9;
 
 
-def mul(x, y):
-    return x * y
+# def mul(x, y):
+#     return x * y
+#
+#
+# def sub(x, y):
+#     return x - y
+#
+#
+# def summa(x, y):
+#     return x + y
 
 
-def sub(x, y):
-    return x - y
-
-
-def summa(x, y):
-    return x + y
-
-
-operators = {'*': mul, '-': sub, '+': summa}
+operators = {
+    '*': (lambda x, y: x * y),
+    '/': (lambda x, y: x / y),
+    '+': (lambda x, y: x - y),
+    '-': (lambda x, y: x - y)
+}
 
 s = '2*3+3'
-elements = [el for el in s]
-# print(elements)
 
+temp = 0
+for el in s:
+    if operators.get('*'):
+        temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
 
-# temp = 0
-# for el in s:
-#     if operators.get('*'):
-#         temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
-#
-# # print(temp)
+# print(temp)
+
 # s = str(temp) + s[s.index('*') + 2:]
 # # print(s)
 # for el in s:
@@ -796,7 +800,7 @@ elements = [el for el in s]
 # последовательности.
 # Пример: [1, 2, 3, 5, 1, 5, 3, 10] => [2, 10]
 
-li = [1, 2, 3, 5, 1, 5, 3, 10]
+# li = [1, 2, 3, 5, 1, 5, 3, 10]
 
 # res = list(filter(lambda x: li.count(x) == 1, li))
 # print(res)
@@ -808,3 +812,20 @@ li = [1, 2, 3, 5, 1, 5, 3, 10]
 #     else:
 #         lst.append(li[i])
 # print(lst)
+
+
+
+# li = [1, 2, 3]
+# idx = li.index(3)
+# print(idx)
+# li.pop(idx)
+# print(li)
+# li.insert(idx, 8)
+# # li.insert(3, 4)
+# print(li)
+# li[0:0] = [9]
+# print(li)
+# li[0:1] = [73]
+# print(li)
+# li.insert(1, 83)
+# print(li)
