@@ -711,43 +711,72 @@ for i in range(len(res)):
 # a. Добавить возможность использования скобок, меняющих приоритет операций.
 # Пример: 1+2*3 => 7; (1+2)*3 => 9;
 
-
-# def mul(x, y):
-#     return x * y
-#
-#
-# def sub(x, y):
-#     return x - y
-#
-#
-# def summa(x, y):
-#     return x + y
-
-
-operators = {
+operators_dict = {
     '*': (lambda x, y: x * y),
-    '/': (lambda x, y: x / y),
-    '+': (lambda x, y: x - y),
+    '/': (lambda x, y: x // y),
+    '+': (lambda x, y: x + y),
     '-': (lambda x, y: x - y)
 }
 
-s = '2*3+3'
+st = '(2+3)*3'
+# st = '1+2*3'
+# st = '(1+2)*3'
+# st = '1-2*3'
+# st = '8/2+5'
+# st = '(9-4)+1'
+li = list(st)
 
-temp = 0
-for el in s:
-    if operators.get('*'):
-        temp = operators['*'](int(s[s.index('*') - 1]), int(s[s.index('*') + 1]))
+while len(li) > 1:
+    for el in li:
+        if el == '(':
+            idx = li.index(el)
+            li.pop(idx)
+            first = int(li.pop(idx))
+            operator = li.pop(idx)
+            second = int(li.pop(idx))
+            li.pop(idx)
+            result = operators_dict[operator](first, second)
+            li.insert(idx, str(result))
 
-# print(temp)
+    for el in li:
+        if el == '*':
+            idx = li.index(el) - 1
+            first = int(li.pop(idx))
+            operator = li.pop(idx)
+            second = int(li.pop(idx))
+            result = operators_dict[operator](first, second)
+            li.insert(idx, str(result))
 
-# s = str(temp) + s[s.index('*') + 2:]
-# # print(s)
-# for el in s:
-#     if operators.get('+'):
-#         temp = operators['+'](int(s[s.index('+') - 1]), int(s[s.index('+') + 1]))
-#
-# s = str(temp)
-# # print(s)
+    for el in li:
+        if el == '/':
+            idx = li.index(el) - 1
+            first = int(li.pop(idx))
+            operator = li.pop(idx)
+            second = int(li.pop(idx))
+            result = operators_dict[operator](first, second)
+            li.insert(idx, str(result))
+
+    for el in li:
+        if el == '+':
+            idx = li.index(el) - 1
+            first = int(li.pop(idx))
+            operator = li.pop(idx)
+            second = int(li.pop(idx))
+            result = operators_dict[operator](first, second)
+            li.insert(idx, str(result))
+
+    for el in li:
+        if el == '-':
+            idx = li.index(el) - 1
+            first = int(li.pop(idx))
+            operator = li.pop(idx)
+            second = int(li.pop(idx))
+            result = operators_dict[operator](first, second)
+            li.insert(idx, str(result))
+
+print(''.join(li))
+
+
 
 # 42. Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
 # a. входные и выходные данные хранятся в отдельных файлах
