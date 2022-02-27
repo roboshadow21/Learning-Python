@@ -704,6 +704,118 @@ for i in range(len(res)):
 #
 # game_with_bot(20)
 
+# 40. Вы ког да-нибудь играли в игру "Крестики-нолики"? Попробуйте создать её.
+
+SIZE = 3
+field = [['-' for _ in range(SIZE)] for _ in range(SIZE)]
+
+
+def show_field():
+    for i in field:
+        print(*i)
+
+
+def check_row():
+    i = 0
+    status = False
+    while i < SIZE:
+        count_x = 0
+        count_zero = 0
+        for el in field[i]:
+            if el == 'x':
+                count_x += 1
+            elif el == '0':
+                count_zero += 1
+        if count_x == SIZE or count_zero == SIZE:
+            status = True
+        i += 1
+    return status
+
+
+# print(check_row())
+
+
+def check_column():
+    status = False
+    i = 0
+    j = 0
+    while i < SIZE:
+        k = 0
+        count_x = 0
+        count_zero = 0
+        while k < SIZE:
+            if field[k][j] == 'x':
+                count_x += 1
+            elif field[k][j] == '0':
+                count_zero += 1
+            k += 1
+        if count_x == SIZE or count_zero == SIZE:
+            status = True
+        i += 1
+        j += 1
+    return status
+
+
+# print(check_column())
+
+
+def check_main_diagonal():
+    status = False
+    i = 0
+    count_x = 0
+    count_zero = 0
+    while i < SIZE:
+        if field[i][i] == 'x':
+            count_x += 1
+        elif field[i][i] == '0':
+            count_zero += 1
+        if count_x == SIZE or count_zero == SIZE:
+            status = True
+        i += 1
+    return status
+
+
+# print(check_main_diagonal())
+
+
+def check_side_diagonal():
+    status = False
+    count_x = 0
+    count_zero = 0
+    i = 0
+    j = 0
+    while i < SIZE:
+        if field[i][-j - 1] == 'x':
+            count_x += 1
+        elif field[i][-j - 1] == '0':
+            count_zero += 1
+        if count_x == SIZE or count_zero == SIZE:
+            status = True
+        i += 1
+        j += 1
+    return status
+
+
+# print(check_side_diagonal())
+
+
+def game_loop():
+    show_field()
+    status = False
+    while not status:
+        if check_row() or check_column() or check_main_diagonal() or check_side_diagonal():
+            show_field()
+            print('Game over!')
+            status = True
+        else:
+            i, j = map(int, input('Enter num: ').split())
+            field[i][j] = input('Enter x or 0: ')
+            show_field()
+            print()
+
+
+# game_loop()
+
 
 # 41. Написать программу вычисления арифметического выражения заданного строкой.
 # Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4;
@@ -718,63 +830,69 @@ operators_dict = {
     '-': (lambda x, y: x - y)
 }
 
-st = '(2+3)*3'
+
+def calc(st):
+    li = list(st)
+    while len(li) > 1:
+        for el in li:
+            if el == '(':
+                idx = li.index(el)
+                li.pop(idx)
+                first = int(li.pop(idx))
+                operator = li.pop(idx)
+                second = int(li.pop(idx))
+                li.pop(idx)
+                result = operators_dict[operator](first, second)
+                li.insert(idx, str(result))
+
+        for el in li:
+            if el == '*':
+                idx = li.index(el) - 1
+                first = int(li.pop(idx))
+                operator = li.pop(idx)
+                second = int(li.pop(idx))
+                result = operators_dict[operator](first, second)
+                li.insert(idx, str(result))
+
+        for el in li:
+            if el == '/':
+                idx = li.index(el) - 1
+                first = int(li.pop(idx))
+                operator = li.pop(idx)
+                second = int(li.pop(idx))
+                result = operators_dict[operator](first, second)
+                li.insert(idx, str(result))
+
+        for el in li:
+            if el == '+':
+                idx = li.index(el) - 1
+                first = int(li.pop(idx))
+                operator = li.pop(idx)
+                second = int(li.pop(idx))
+                result = operators_dict[operator](first, second)
+                li.insert(idx, str(result))
+
+        for el in li:
+            if el == '-':
+                idx = li.index(el) - 1
+                first = int(li.pop(idx))
+                operator = li.pop(idx)
+                second = int(li.pop(idx))
+                result = operators_dict[operator](first, second)
+                li.insert(idx, str(result))
+    return ''.join(li)
+
+
+s = '(2+3)*3+2*(4+2)'
 # st = '1+2*3'
 # st = '(1+2)*3'
 # st = '1-2*3'
-# st = '8/2+5'
+# st = '8/2+7'
 # st = '(9-4)+1'
-li = list(st)
 
-while len(li) > 1:
-    for el in li:
-        if el == '(':
-            idx = li.index(el)
-            li.pop(idx)
-            first = int(li.pop(idx))
-            operator = li.pop(idx)
-            second = int(li.pop(idx))
-            li.pop(idx)
-            result = operators_dict[operator](first, second)
-            li.insert(idx, str(result))
+# print(calc(s))
 
-    for el in li:
-        if el == '*':
-            idx = li.index(el) - 1
-            first = int(li.pop(idx))
-            operator = li.pop(idx)
-            second = int(li.pop(idx))
-            result = operators_dict[operator](first, second)
-            li.insert(idx, str(result))
 
-    for el in li:
-        if el == '/':
-            idx = li.index(el) - 1
-            first = int(li.pop(idx))
-            operator = li.pop(idx)
-            second = int(li.pop(idx))
-            result = operators_dict[operator](first, second)
-            li.insert(idx, str(result))
-
-    for el in li:
-        if el == '+':
-            idx = li.index(el) - 1
-            first = int(li.pop(idx))
-            operator = li.pop(idx)
-            second = int(li.pop(idx))
-            result = operators_dict[operator](first, second)
-            li.insert(idx, str(result))
-
-    for el in li:
-        if el == '-':
-            idx = li.index(el) - 1
-            first = int(li.pop(idx))
-            operator = li.pop(idx)
-            second = int(li.pop(idx))
-            result = operators_dict[operator](first, second)
-            li.insert(idx, str(result))
-
-print(''.join(li))
 
 
 
@@ -823,8 +941,6 @@ print(''.join(li))
 # print(decode(decode_st))
 
 
-
-
 # 43. Дана последовательность чисел. Получить список уникальных элементов заданной
 # последовательности.
 # Пример: [1, 2, 3, 5, 1, 5, 3, 10] => [2, 10]
@@ -843,18 +959,3 @@ print(''.join(li))
 # print(lst)
 
 
-
-# li = [1, 2, 3]
-# idx = li.index(3)
-# print(idx)
-# li.pop(idx)
-# print(li)
-# li.insert(idx, 8)
-# # li.insert(3, 4)
-# print(li)
-# li[0:0] = [9]
-# print(li)
-# li[0:1] = [73]
-# print(li)
-# li.insert(1, 83)
-# print(li)
