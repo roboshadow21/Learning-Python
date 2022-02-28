@@ -883,14 +883,15 @@ def calc(st):
     return ''.join(li)
 
 
-s = '(2+3)*3+2*(4+2)'
+# s = '(2+3)*3+2*(4+2)'
 # st = '1+2*3'
 # st = '(1+2)*3'
 # st = '1-2*3'
 # st = '8/2+7'
-# st = '(9-4)+1'
+st = '(9-4)/3'
+# st = '(1+2j)+(2+3j)'
 
-# print(calc(s))
+# print(calc(st))
 
 
 
@@ -958,4 +959,8 @@ s = '(2+3)*3+2*(4+2)'
 #         lst.append(li[i])
 # print(lst)
 
-
+# a, b, c, d = map(int, input('Enter num: ').split())
+# print(complex(a, b))
+# print(complex(c, d))
+s = '(1+2j)+(2+3j)'
+print(eval(s))
