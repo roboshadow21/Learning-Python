@@ -5,6 +5,7 @@ import re
 import sympy
 from decimal import Decimal
 from collections import deque
+from fractions import Fraction
 # Семинар 1-2: примерный список задач
 
 # 1. По двум заданным числам проверить является ли одно квадратом второго
@@ -825,13 +826,13 @@ def game_loop():
 
 operators_dict = {
     '*': (lambda x, y: x * y),
-    '/': (lambda x, y: x // y),
+    '/': (lambda x, y: x / y),
     '+': (lambda x, y: x + y),
     '-': (lambda x, y: x - y)
 }
 
 
-def calc(st):
+def calc_int(st):
     li = list(st)
     while len(li) > 1:
         for el in li:
@@ -861,7 +862,7 @@ def calc(st):
                 operator = li.pop(idx)
                 second = int(li.pop(idx))
                 result = operators_dict[operator](first, second)
-                li.insert(idx, str(result))
+                li.insert(idx, str(round(result, 2)))
 
         for el in li:
             if el == '+':
@@ -883,18 +884,61 @@ def calc(st):
     return ''.join(li)
 
 
-# s = '(2+3)*3+2*(4+2)'
+def calc_complex(st):
+    li = []
+    result = 0
+    for i in range(len(st)):
+        if st[i] == ',':
+            first = st[i - 1]
+            second = st[i + 1]
+            temp = complex(int(first), int(second))
+            li.append(temp)
+        elif st[i] in operators_dict:
+            li.append(st[i])
+
+    for i in range(len(li)):
+        if li[i] in operators_dict:
+            first = li[i - 1]
+            second = li[i + 1]
+            result = operators_dict[li[i]](first, second)
+    return result
+
+
+def calc_rational(st):
+    li = []
+    result = 0
+    for i in range(len(st)):
+        if st[i] == ',':
+            first = st[i - 1]
+            second = st[i + 1]
+            temp = Fraction(int(first), int(second))
+            li.append(temp)
+        elif st[i] in operators_dict:
+            li.append(st[i])
+
+    for i in range(len(li)):
+        if li[i] in operators_dict:
+            first = li[i - 1]
+            second = li[i + 1]
+            result = operators_dict[li[i]](first, second)
+    return result
+
+
+# st = '(2+3)*3+2*(4+2)'
 # st = '1+2*3'
 # st = '(1+2)*3'
 # st = '1-2*3'
 # st = '8/2+7'
-st = '(9-4)/3'
+# st = '(9-4)/3'
 # st = '(1+2j)+(2+3j)'
 
-# print(calc(st))
+# print(calc_int(st))
 
+# s = '1,2+3,4'
+# print(calc_complex(s))
 
-
+# s = '2,3/4,9'
+# print(calc_rational(s))
 
 
 # 42. Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
@@ -958,9 +1002,3 @@ st = '(9-4)/3'
 #     else:
 #         lst.append(li[i])
 # print(lst)
-
-# a, b, c, d = map(int, input('Enter num: ').split())
-# print(complex(a, b))
-# print(complex(c, d))
-s = '(1+2j)+(2+3j)'
-print(eval(s))

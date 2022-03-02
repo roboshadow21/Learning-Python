@@ -1,3 +1,16 @@
+import calc
+
+
 def user_input():
-    st = input('Enter expression: ')
-    return st
+    result = 0
+    choice = input('To select the type of calculations enter:\nFor integer: 1\nFor complex: 2\nFor rational: 3\n: ')
+    if choice == '1':
+        st = input('Enter an expression without spaces: ')
+        result = calc.calc_int(st)
+    elif choice == '2':
+        st = input('Enter an expression with complex numbers, separator = ",": ')
+        result = calc.calc_complex(st)
+    elif choice == '3':
+        st = input('Enter an expression with rational numbers, separator = ",": ')
+        result = calc.calc_rational(st)
+    return result
