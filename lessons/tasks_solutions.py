@@ -904,24 +904,24 @@ def calc_complex(st):
     return result
 
 
-def calc_rational(st):
-    li = []
-    result = 0
-    for i in range(len(st)):
-        if st[i] == ',':
-            first = st[i - 1]
-            second = st[i + 1]
-            temp = Fraction(int(first), int(second))
-            li.append(temp)
-        elif st[i] in operators_dict:
-            li.append(st[i])
-
-    for i in range(len(li)):
-        if li[i] in operators_dict:
-            first = li[i - 1]
-            second = li[i + 1]
-            result = operators_dict[li[i]](first, second)
-    return result
+# def calc_rational(st):
+#     li = []
+#     result = 0
+#     for i in range(len(st)):
+#         if st[i] == ',':
+#             first = st[i - 1]
+#             second = st[i + 1]
+#             temp = Fraction(int(first), int(second))
+#             li.append(temp)
+#         elif st[i] in operators_dict:
+#             li.append(st[i])
+#
+#     for i in range(len(li)):
+#         if li[i] in operators_dict:
+#             first = li[i - 1]
+#             second = li[i + 1]
+#             result = operators_dict[li[i]](first, second)
+#     return result
 
 
 # st = '(2+3)*3+2*(4+2)'
@@ -1002,3 +1002,31 @@ def calc_rational(st):
 #     else:
 #         lst.append(li[i])
 # print(lst)
+from fractions import Fraction
+s = '11 33 + 11 33'
+
+
+def calc_rational(st):
+    li = st.split()
+    result = 0
+    lst = []
+    for i in range(len(li)):
+        if li[i] in operators_dict:
+            numerator1, numerator2 = li[i - 2], li[i + 1]
+            denominator1, denominator2 = li[i - 1], li[i + 2]
+            temp1 = Fraction(int(numerator1), int(denominator1))
+            temp2 = Fraction(int(numerator2), int(denominator2))
+            lst.append(temp1)
+            lst.append(li[i])
+            lst.append(temp2)
+    for i in range(len(lst)):
+       if lst[i] in operators_dict:
+            first = lst[i - 1]
+            second = lst[i + 1]
+            result = operators_dict[lst[i]](first, second)
+    return result
+    # print(lst)
+
+print(calc_rational(s))
+# calc_rational(s)
+

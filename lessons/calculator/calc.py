@@ -3,7 +3,7 @@ from fractions import Fraction
 
 
 def calc_int(st: str):
-    li = list(st)
+    li = st.split()
     while len(li) > 1:
         for el in li:
             if el == '(':
