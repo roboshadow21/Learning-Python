@@ -1005,3 +1005,4 @@ def calc_rational(st):
 #         lst.append(li[i])
 # print(lst)
 
+
