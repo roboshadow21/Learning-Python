@@ -3,7 +3,7 @@ from fractions import Fraction
 
 
 def calc_int(st: str):
-    li = list(st)
+    li = st.split()
     while len(li) > 1:
         for el in li:
             if el == '(':
@@ -55,40 +55,42 @@ def calc_int(st: str):
 
 
 def calc_complex(st: str) -> complex:
-    li = []
+    li = st.split()
     result = 0
-    for i in range(len(st)):
-        if st[i] == ',':
-            first = st[i - 1]
-            second = st[i + 1]
-            temp = complex(int(first), int(second))
-            li.append(temp)
-        elif st[i] in op.operators_dict:
-            li.append(st[i])
-
+    lst = []
     for i in range(len(li)):
         if li[i] in op.operators_dict:
-            first = li[i - 1]
-            second = li[i + 1]
-            result = op.operators_dict[li[i]](first, second)
+            real_number1, real_number2 = li[i - 2], li[i + 1]
+            imaginary_number1, imaginary_number2 = li[i - 1], li[i + 2]
+            temp1 = complex(int(real_number1), int(imaginary_number1))
+            temp2 = complex(int(real_number2), int(imaginary_number2))
+            lst.append(temp1)
+            lst.append(li[i])
+            lst.append(temp2)
+    for i in range(len(lst)):
+        if lst[i] in op.operators_dict:
+            first = lst[i - 1]
+            second = lst[i + 1]
+            result = op.operators_dict[lst[i]](first, second)
     return result
 
 
 def calc_rational(st: str):
-    li = []
+    li = st.split()
     result = 0
-    for i in range(len(st)):
-        if st[i] == ',':
-            first = st[i - 1]
-            second = st[i + 1]
-            temp = Fraction(int(first), int(second))
-            li.append(temp)
-        elif st[i] in op.operators_dict:
-            li.append(st[i])
-
+    lst = []
     for i in range(len(li)):
         if li[i] in op.operators_dict:
-            first = li[i - 1]
-            second = li[i + 1]
-            result = op.operators_dict[li[i]](first, second)
+            numerator1, numerator2 = li[i - 2], li[i + 1]
+            denominator1, denominator2 = li[i - 1], li[i + 2]
+            temp1 = Fraction(int(numerator1), int(denominator1))
+            temp2 = Fraction(int(numerator2), int(denominator2))
+            lst.append(temp1)
+            lst.append(li[i])
+            lst.append(temp2)
+    for i in range(len(lst)):
+        if lst[i] in op.operators_dict:
+            first = lst[i - 1]
+            second = lst[i + 1]
+            result = op.operators_dict[lst[i]](first, second)
     return result

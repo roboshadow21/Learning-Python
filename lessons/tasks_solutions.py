@@ -885,42 +885,44 @@ def calc_int(st):
 
 
 def calc_complex(st):
-    li = []
+    li = st.split()
     result = 0
-    for i in range(len(st)):
-        if st[i] == ',':
-            first = st[i - 1]
-            second = st[i + 1]
-            temp = complex(int(first), int(second))
-            li.append(temp)
-        elif st[i] in operators_dict:
-            li.append(st[i])
-
+    lst = []
     for i in range(len(li)):
         if li[i] in operators_dict:
-            first = li[i - 1]
-            second = li[i + 1]
-            result = operators_dict[li[i]](first, second)
+            real_number1, real_number2 = li[i - 2], li[i + 1]
+            imaginary_number1, imaginary_number2 = li[i - 1], li[i + 2]
+            temp1 = complex(int(real_number1), int(imaginary_number1))
+            temp2 = complex(int(real_number2), int(imaginary_number2))
+            lst.append(temp1)
+            lst.append(li[i])
+            lst.append(temp2)
+    for i in range(len(lst)):
+        if lst[i] in operators_dict:
+            first = lst[i - 1]
+            second = lst[i + 1]
+            result = operators_dict[lst[i]](first, second)
     return result
 
 
 def calc_rational(st):
-    li = []
+    li = st.split()
     result = 0
-    for i in range(len(st)):
-        if st[i] == ',':
-            first = st[i - 1]
-            second = st[i + 1]
-            temp = Fraction(int(first), int(second))
-            li.append(temp)
-        elif st[i] in operators_dict:
-            li.append(st[i])
-
+    lst = []
     for i in range(len(li)):
         if li[i] in operators_dict:
-            first = li[i - 1]
-            second = li[i + 1]
-            result = operators_dict[li[i]](first, second)
+            numerator1, numerator2 = li[i - 2], li[i + 1]
+            denominator1, denominator2 = li[i - 1], li[i + 2]
+            temp1 = Fraction(int(numerator1), int(denominator1))
+            temp2 = Fraction(int(numerator2), int(denominator2))
+            lst.append(temp1)
+            lst.append(li[i])
+            lst.append(temp2)
+    for i in range(len(lst)):
+        if lst[i] in operators_dict:
+            first = lst[i - 1]
+            second = lst[i + 1]
+            result = operators_dict[lst[i]](first, second)
     return result
 
 
@@ -991,10 +993,10 @@ def calc_rational(st):
 # Пример: [1, 2, 3, 5, 1, 5, 3, 10] => [2, 10]
 
 # li = [1, 2, 3, 5, 1, 5, 3, 10]
-
+#
 # res = list(filter(lambda x: li.count(x) == 1, li))
 # print(res)
-
+#
 # lst = []
 # for i in range(len(li)):
 #     if li.count(li[i]) > 1:
@@ -1002,3 +1004,4 @@ def calc_rational(st):
 #     else:
 #         lst.append(li[i])
 # print(lst)
+
