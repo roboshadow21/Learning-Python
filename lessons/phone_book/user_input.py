@@ -7,7 +7,7 @@ Phone = namedtuple('Phone', 'Name, Surname, Phone_number')
 
 
 def one_line_input():
-    csv.register_dialect('excel-semicolon', delimiter=';')
+    csv.register_dialect('excel-semicolon', delimiter=' ')
     while True:
         user_input = input('Enter name, surname, phone number: ')
         if user_input == 'q':
@@ -61,6 +61,14 @@ def line_by_line_output():
 
 
 # line_by_line_output()
+
+# with open('phone_book.csv') as f:
+#     reader = csv.reader(f, dialect='excel-semicolon')
+#     data = [el for el in reader if el]
+#     for el in map(Phone._make, data):
+        # print(el.Name)
+        # print(el.Surname)
+
 
 
 # Employee = namedtuple('Employee', 'name, age, department, pay')
