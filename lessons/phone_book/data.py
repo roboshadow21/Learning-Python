@@ -1,15 +1,15 @@
 import csv
 from collections import namedtuple
 
-csv.register_dialect('excel-semicolon', delimiter=' ')
+# csv.register_dialect('excel-semicolon', delimiter=' ')
 encoding = 'utf-8'
-Phone = namedtuple('Phone', 'Name, Surname, Phone_number')
+Phone = namedtuple('Phone', 'Name, Surname, Phone_number, Description')
 
 
 def one_line_input():
-    csv.register_dialect('excel-semicolon', delimiter=' ')
+    csv.register_dialect('excel-semicolon', delimiter=';')
     while True:
-        user_input = input('Enter name, surname, phone number: ')
+        user_input = input('Enter name, surname, phone number, description: ')
         if user_input == 'q':
             break
         else:
@@ -19,13 +19,10 @@ def one_line_input():
             writer.writerow(data)
 
 
-# one_line_input()
-
-
 def line_by_line_input():
     csv.register_dialect('excel-semicolon', delimiter=' ')
     while True:
-        user_input = input('Enter name, surname, phone number: ')
+        user_input = input('Enter name, surname, phone number, description: ')
         if user_input == 'q':
             break
         else:
@@ -35,19 +32,14 @@ def line_by_line_input():
             writer.writerows(data)
 
 
-# line_by_line_input()
-
-
 def one_line_output():
+    csv.register_dialect('excel-semicolon', delimiter=' ')
     with open('phone_book.csv') as f:
         reader = csv.reader(f, dialect='excel-semicolon')
         print(' '.join(Phone._fields))
-        print('-' * 25)
+        print('-' * 35)
         for el in reader:
-            print('   '.join(el))
-
-
-# one_line_output()
+            print('  '.join(el))
 
 
 def line_by_line_output():
@@ -59,8 +51,6 @@ def line_by_line_output():
         for el in reader:
             print('\n'.join(el))
 
-
-# line_by_line_output()
 
 # with open('phone_book.csv') as f:
 #     reader = csv.reader(f, dialect='excel-semicolon')
