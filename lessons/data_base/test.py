@@ -37,6 +37,7 @@ cursor.execute("""create table if not exists stuff(
               surname text,
               sex text,
               birthday_at text,
+              marital_status text,
               position_id integer not null,
               status_id integer not null,
               foreign key (position_id) references position(id),
@@ -44,10 +45,39 @@ cursor.execute("""create table if not exists stuff(
               """)
 
 cursor.execute(
-    """insert into stuff(name, surname, sex, birthday_at, position_id, status_id) values(
-    'Alex', 'Doe', 'm','1969-09-29', 1, 1);""")
+    """insert into stuff(name, surname, sex, birthday_at, marital_status, position_id, status_id) values(
+    'Alex', 'Doe', 'm','1969-09-29', 'married', 1, 1);
+    """)
 
+# Table contacts
+cursor.execute("drop table if exists contacts")
+cursor.execute("""create table if not exists contacts(
+               id integer primary key autoincrement not null,
+               stuff_id integer not null,
+               phone text,
+               description_phone text,
+               email text,
+               description_email text,
+               foreign key (stuff_id) references stuff(id));
+               """)
 
+cursor.execute("""insert into contacts(stuff_id, phone, description_phone, email, description_email) values(
+              1, '12-345', 'личный', 'alex@mail.ru', 'служебная');
+              """)
+
+# Table addresses
+
+cursor.execute("drop table if exists addresses")
+cursor.execute("""create table if not exists addresses(
+               id integer primary key autoincrement not null,
+               stuff_id integer not null,
+               address text,
+               description text,
+               foreign key (stuff_id) references stuff(id));
+               """)
+cursor.execute("""insert into addresses(stuff_id, address, description) values(
+              1, 'Москва', 'по прописке');
+              """)
 conn.commit()
 
 # Show age
@@ -79,8 +109,16 @@ res = cursor.fetchall()
 print(res)
 
 cursor.execute("select * from status;")
-resul = cursor.fetchall()
-print(resul)
+res = cursor.fetchall()
+print(res)
+
+cursor.execute("select * from contacts")
+res = cursor.fetchall()
+print(res)
+
+cursor.execute("select * from addresses")
+res = cursor.fetchall()
+print(res)
 
 # Insert variable into query
 
