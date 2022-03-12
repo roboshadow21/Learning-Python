@@ -135,5 +135,10 @@ cursor.execute("select stuff.name, stuff.surname, position.salary "
 res = cursor.fetchall()
 print(res)
 
+cursor.execute("select name, description, salary"
+               " from stuff left join status, position on stuff.status_id=status.id and stuff.position_id=position.id;")
+res = cursor.fetchall()
+print(res)
+
 conn.close()
 
