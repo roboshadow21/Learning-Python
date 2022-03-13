@@ -21,4 +21,21 @@ cursor.execute("select * from position")
 res = cursor.fetchall()
 print(res)
 
+# Table status
+
+cursor.execute("drop table if exists status")
+
+cursor.execute("""create table if not exists status(
+id integer primary key autoincrement not null,
+description text);
+""")
+
+status = [
+    ('работает',), ('уволен',), ('отпуск',), ('командировка',), ('декрет',)
+]
+cursor.executemany("""insert into status(description) values(?);""", status)
+cursor.execute("select * from status")
+res = cursor.fetchall()
+print(res)
+
 conn.close()
