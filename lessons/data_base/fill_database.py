@@ -17,9 +17,9 @@ data = [
     ('IT-инженер', 300000), ('Водитель', 80000), ('Офис-менеджер', 45000)
 ]
 cursor.executemany("""insert into position(position, salary) values(?, ?);""", data)
-cursor.execute("select * from position")
-res = cursor.fetchall()
-print(res)
+# cursor.execute("select * from position")
+# res = cursor.fetchall()
+# print(res)
 
 # Table status
 
@@ -34,9 +34,9 @@ status = [
     ('работает',), ('уволен',), ('отпуск',), ('командировка',), ('декрет',)
 ]
 cursor.executemany("""insert into status(description) values(?);""", status)
-cursor.execute("select * from status")
-res = cursor.fetchall()
-print(res)
+# cursor.execute("select * from status")
+# res = cursor.fetchall()
+# print(res)
 
 # Table Stuff
 
@@ -73,9 +73,9 @@ cursor.executemany(
     ?, ?, ?, ?, ?, ?, ?);
     """, persons)
 
-cursor.execute("select * from stuff")
-res = cursor.fetchall()
-print(res)
+# cursor.execute("select * from stuff")
+# res = cursor.fetchall()
+# print(res)
 
 # Table contacts
 cursor.execute("drop table if exists contacts")
@@ -101,9 +101,9 @@ contacts = [
 cursor.executemany("""insert into contacts(stuff_id, phone, description_phone, email, description_email) values(
               ?, ?, ?, ?, ?);
               """, contacts)
-cursor.execute("select * from contacts")
-res = cursor.fetchall()
-print(res)
+# cursor.execute("select * from contacts")
+# res = cursor.fetchall()
+# print(res)
 
 # Table addresses
 
@@ -123,9 +123,9 @@ cursor.executemany("""insert into addresses(stuff_id, address, description) valu
               ?, ?, ?);
               """, address)
 
-cursor.execute("select * from addresses")
-res = cursor.fetchall()
-print(res)
+# cursor.execute("select * from addresses")
+# res = cursor.fetchall()
+# print(res)
 
 conn.commit()
 conn.close()
