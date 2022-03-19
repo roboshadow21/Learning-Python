@@ -233,4 +233,4 @@ cursor.execute("select name, surname from stuff where status_id=(select id from 
 # res = cursor.fetchall()
 # print(res)
 
-conn.close()
+# conn.close()
