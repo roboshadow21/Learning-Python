@@ -103,7 +103,7 @@ def add_new_address():
 
 
 def show_contacts():
-    name, surname = map(str, input('Enter name, surname: ').split())
+    name, surname = map(str, input('Enter name, surname: ').lower().split())
     cursor.execute(
         "select phone, description_phone, email, description_email from contacts "
         "where stuff_id=(select id from stuff where name=? and surname=?);", (name, surname))
@@ -115,7 +115,7 @@ def show_contacts():
 
 
 def show_addresses():
-    name, surname = map(str, input('Enter name, surname: ').split())
+    name, surname = map(str, input('Enter name, surname: ').lower().split())
     cursor.execute(
         "select address, description from addresses "
         "where stuff_id=(select id from stuff where name=? and surname=?);", (name, surname))
@@ -138,7 +138,7 @@ def show_all_stuff_salary():
 
 
 def show_employee_salary():
-    name, surname = map(str, input('Enter name, surname: ').split())
+    name, surname = map(str, input('Enter name, surname: ').lower().split())
     cursor.execute("select stuff.name, stuff.surname, position, position.salary "
                    "from stuff left join position on stuff.position_id=position.id;")
     result = cursor.fetchall()
@@ -163,7 +163,7 @@ def show_all_employees_contacts():
 
 
 def find_employee_contacts():
-    surname = input('Enter surname: ')
+    surname = input('Enter surname: ').lower()
     cursor.execute("select name, surname, position, phone, email "
                    "from stuff left join contacts, position on stuff.id=contacts.stuff_id and "
                    "stuff.position_id=position.id;")
@@ -196,7 +196,7 @@ def show_employee_age():
 
 
 def show_status():
-    status = input('Enter the status to find: ')
+    status = input('Enter the status to find: ').lower()
     cursor.execute(
         "select name, surname, position, description "
         "from stuff left join status, position on stuff.status_id=status.id and stuff.position_id=position.id;")
