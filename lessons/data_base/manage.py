@@ -206,6 +206,16 @@ def show_status():
             print(item)
 
 
+def show_positions():
+    cursor.execute("select * from position")
+    positions = cursor.fetchall()
+    for item in positions:
+        print(f'ID - {item[0]}, position - {item[1]}, salary - {item[2]}')
+
+
+# show_positions()
+
+
 # show_status()
 
 
