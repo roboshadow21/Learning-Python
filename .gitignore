@@ -2,3 +2,4 @@ venv/
 __pycache__/
 office.db
 lessons/data_base/office.db
+start.py
