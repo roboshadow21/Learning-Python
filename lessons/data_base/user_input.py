@@ -56,6 +56,6 @@ def user():
                 show[query]()
 
 
-user()
+# user()
 
 conn.close()
