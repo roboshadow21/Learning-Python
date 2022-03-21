@@ -3,6 +3,7 @@ from telegram.ext import Updater, CommandHandler, CallbackContext
 from datetime import datetime
 
 
+
 def hello(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(f'Hello {update.effective_user.first_name}, {update.effective_user.id}')
 
@@ -27,5 +28,12 @@ def bad(update: Update, context: CallbackContext) -> None:
 
 def test(update: Update, context: CallbackContext) -> None:
     msg = update.message.text.split()
-    if msg[1] == 'бот':
-        update.message.reply_text(f'Whats up?')
+    if msg[1] == 'привет':
+        update.message.reply_text(f'Привет! Чем помочь?')
+    else:
+        update.message.reply_text(f'Я занят')
+
+
+# def game(update: Update, context: CallbackContext) -> None:
+#     res = loop.game_loop()
+#     update.message.reply_text(f'{res}')
