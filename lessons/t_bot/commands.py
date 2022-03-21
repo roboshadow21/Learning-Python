@@ -22,8 +22,10 @@ def time(update: Update, context: CallbackContext) -> None:
 
 
 def bad(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(f'Ибать вас некому!')
+    update.message.reply_text(f'Никого нет дома!')
 
 
 def test(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text(f'{update.message.text}')
+    msg = update.message.text.split()
+    if msg[1] == 'бот':
+        update.message.reply_text(f'Whats up?')
