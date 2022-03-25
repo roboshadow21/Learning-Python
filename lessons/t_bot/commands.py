@@ -1,7 +1,12 @@
+import telegram
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram.ext import Updater, CommandHandler, CallbackContext, MessageHandler, Filters
 from datetime import datetime
 
+
+def start(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=f"Привет {update.effective_user.first_name}")
 
 
 def hello(update: Update, context: CallbackContext) -> None:
@@ -18,8 +23,14 @@ def summa(update: Update, context: CallbackContext) -> None:
 
 
 def time(update: Update, context: CallbackContext) -> None:
-    current_time = datetime.now().time()
+    current_time = str(datetime.now().time())[:-7]
     update.message.reply_text(f'Сейчас {current_time}')
+
+
+def time2(update, context):
+    t = datetime.now().time()
+    context.bot.send_message(chat_id=update.effective_chat.id,
+                             text=f'Точное время {str(t)[:-7]}')
 
 
 def bad(update: Update, context: CallbackContext) -> None:
@@ -34,6 +45,17 @@ def test(update: Update, context: CallbackContext) -> None:
         update.message.reply_text(f'Я занят')
 
 
-# def game(update: Update, context: CallbackContext) -> None:
-#     res = loop.game_loop()
-#     update.message.reply_text(f'{res}')
+def photo1(update, context):
+    context.bot.send_photo(chat_id=update.effective_chat.id, photo='https://yandex.ru/images/search?utm_source='
+                           'main_stripe_big&text='
+                           '%D0%A1%D0%BE%D0%B2%D0%BE%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B5&nl=1&source=morda')
+
+
+def photo2(update, context):
+    update.message.reply_text('https://yandex.ru/images/search?utm_source='
+                           'main_stripe_big&text='
+                           '%D0%A1%D0%BE%D0%B2%D0%BE%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B5&nl=1&source=morda')
+
+
+def unknown(update, context):
+    update.message.reply_text("Это что за команда?")

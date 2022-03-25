@@ -1,20 +1,24 @@
-from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
 from commands import *
+from config import *
+from datetime import datetime
 
 
-updater = Updater('')
+updater = Updater(token=token)
+dispatcher = updater.dispatcher
 
-updater.dispatcher.add_handler(CommandHandler('hello', hello))
-updater.dispatcher.add_handler(CommandHandler('hi', user_id))
-updater.dispatcher.add_handler(CommandHandler('summa', summa))
-updater.dispatcher.add_handler(CommandHandler('time', time))
-updater.dispatcher.add_handler(CommandHandler('bad', bad))
-updater.dispatcher.add_handler(CommandHandler('test', test))
-# updater.dispatcher.add_handler(CommandHandler('game', game))
+dispatcher.add_handler(CommandHandler('start', start))
+dispatcher.add_handler(CommandHandler('hello', hello))
+dispatcher.add_handler(CommandHandler('hi', user_id))
+dispatcher.add_handler(CommandHandler('summa', summa))
+dispatcher.add_handler(CommandHandler('time', time))
+dispatcher.add_handler(CommandHandler('time2', time2))
+dispatcher.add_handler(CommandHandler('bad', bad))
+dispatcher.add_handler(CommandHandler('test', test))
+dispatcher.add_handler(CommandHandler('photo1', photo1))
+dispatcher.add_handler(CommandHandler('photo2', photo2))
+dispatcher.add_handler(MessageHandler(Filters.command, unknown))
 
 updater.start_polling()
 updater.idle()
 
-# first_test_dreamer_bot
-# fancy_bot
+
